@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<parameters>
+  <setParameter name="IIS Web Application Name"
+              value="dev1.bestpickreports.com" />
+
+  <!--Database-->
+  <setParameter name="ConnString-Web.config Connection String"
+                value="Server=ISSHQDBSQL01D\ESWS_BSDG_Dev1;Database=BPR-Production;Trusted_Connection=True;" />
+
+  <setParameter name="rewriteRule-Redirect" value="None" />
+  
+</parameters>

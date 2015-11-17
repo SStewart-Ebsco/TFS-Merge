@@ -1,0 +1,133 @@
+﻿.category-container
+{
+    display: table;
+    word-break: break-word;
+    text-decoration: none;
+    color: #000;
+}
+.category-container a
+{
+    text-decoration: none;
+    color: #000;
+}
+
+.category-container-icon
+{
+}
+
+.category-container-content
+{
+    display: table-cell;
+    vertical-align: middle;
+    width: 100%;
+    text-decoration: none;
+    color: #000;
+}
+
+
+
+.category-categoryIcon 
+{
+    width: 68px;
+    height: 68px;
+    margin-right: 10px;
+}
+
+.category-header
+{
+    margin: 20px 0px 17px;
+}
+
+.category-categoryName
+{
+    font-size: 15pt;
+    font-weight: bold;
+    color: #000;
+}
+
+.category-separator
+{
+    border-top: solid 2px #fff;
+    border-bottom: solid 2px #d0d9eb;
+    margin: 13px -13px;
+}
+
+.category-banner-alert
+{
+    font-size: 11pt;
+    margin: 18px 0 0 0;
+}
+
+.category-ribbonIcon
+{
+    padding: 0 5px 0 0;
+}
+
+.category-contractor-list
+{
+    margin: 18px 0 35px 0;
+}
+
+.category-contractor-item
+{
+    margin: 18px 0 0 0;
+}
+
+.category-contractor-info>h3
+{
+    margin: 0;
+}
+.category-contractor-info>h4
+{
+    margin: 0;
+    font-weight: normal;
+    color: #565555;
+}
+
+.category-contractor-info a
+{
+    display: block;
+}
+
+.category-contractor-contactList
+{
+    padding: 10px 0 0 0;
+}
+
+.category-contractor-contact
+{
+    float: left;
+    width: 80px;
+}
+.category-contractor-contact-icon
+{
+    margin: 0 3px -3px 0;
+    float: left;
+}
+
+.category-articles
+{
+    margin: 27px 0 25px 0;
+}
+
+.category-article-item
+{
+    padding: 8px 0 8px 0;
+}
+
+.category-articleIcon
+{
+    margin: 0 10px 0 0;
+}
+.bnote {
+    text-align: center;
+    font-size: 14px;
+    font-style: italic;
+    margin: 0 30px 15px 15px;
+}
+
+.reqpanel {
+	float: left;
+	padding: 0 0 15px 0;
+	width: 100%;
+}

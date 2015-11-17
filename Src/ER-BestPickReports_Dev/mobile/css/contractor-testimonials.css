@@ -1,0 +1,101 @@
+﻿.quoteButton
+{
+    margin: 0 2px;
+    vertical-align: top;
+    font-weight: bold !important;
+    font: inherit;
+    color: #000;
+    background-image: url(/images/review_navigation_bg.png);
+    background-repeat: repeat-x;
+    height: 23px !important;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .5);
+    border-radius: 5px;
+    border-style: solid;
+    border-color: #c9c9c9;
+    border-width: thin;
+    text-align: center;
+	padding: 0 4px;
+}
+
+.quoteButtonSelected
+{
+    margin: 0 2px;
+    font-weight: bold !important;
+    font: inherit;
+    color: #fff;
+    background: url(/images/review_navigation_bg_pressed.png) repeat-x;
+    height: 20px !important;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .5);
+    border-radius: 5px;
+    display: inline-block;
+    padding: 3px 5px 0 5px;
+}
+
+input.quoteButton:hover
+{
+    background: url(/images/review_navigation_bg_hover.png) center no-repeat;
+}
+
+.quoteButtonPrevious
+{
+    margin: 0 2px;
+    vertical-align: top;
+    background: url(/images/review_navigation_leftArrow.png) center no-repeat;
+    height: 23px !important;
+    width: 23px !important;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .5);
+    border-radius: 5px;
+    border-style: solid;
+    border-color: #c9c9c9;
+    border-width: thin;
+    display: inline-block;
+    
+}
+.quoteButtonPrevious img
+{
+    content: "" !important;
+    border-width: 0;
+    border-style: none;
+    
+}
+
+input.quoteButtonPrevious:hover
+{
+    background: url(/images/review_navigation_leftArrow_hover.png) center no-repeat;
+}
+
+.quoteButtonNext
+{
+    margin: 0 2px;
+    vertical-align: top;
+    background: url(/images/review_navigation_rightArrow.png) center no-repeat;
+    width: 23px;
+    height: 23px !important;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .5);
+    border-radius: 5px;
+    border-style: solid;
+    border-color: #c9c9c9;
+    border-width: thin;
+    display: inline-block;
+}
+
+input.quoteButtonNext:hover
+{
+    background-image: url(/images/review_navigation_rightArrow_hover.png);
+}
+
+.quoteButtonElipse
+{
+    display: none;
+}
+
+input.quoteButtonElipse:hover
+{
+    background-image: url(/images/review_navigation_elipse_hover.png);
+}
+
+.divCenter
+{
+    text-align: center;
+    margin: 30px -8px 30px -8px;
+}

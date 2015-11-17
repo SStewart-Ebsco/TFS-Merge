@@ -1,0 +1,150 @@
+@charset "utf-8";
+body {
+	font-family: "Myriad Pro", sans-serif;
+	background-image: -webkit-gradient(linear, 50.00% 0.00%, 50.00% 100.00%, color-stop( 0% , rgba(15,161,218,1.00)),color-stop( 100% , rgba(255,255,255,1.00)));
+	background-image: -webkit-linear-gradient(270deg,rgba(15,161,218,1.00) 0%,rgba(255,255,255,1.00) 100%);
+	background-image: linear-gradient(180deg,rgba(15,161,218,1.00) 0%,rgba(255,255,255,1.00) 100%);
+	background-repeat: no-repeat;
+}
+#mc_embed_signup {
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+}
+#button    {
+	display: block !important;
+	font-family: "Myriad Pro", sans-serif!important;
+	font-weight: 700!important;
+	color: #FFFFFF!important;
+	border-radius: 4px!important;
+	background-color: #092f87!important;
+	padding-top: 13px!important;
+	padding-bottom: 13px!important;
+	border-width: 0px!important;
+	font-size: 24px!important;
+	margin-top: 20px!important;
+	margin-left: auto!important;
+	margin-right: auto!important;
+	width: 276px!important;
+	cursor: pointer!important;
+	padding-left: 30px;
+	padding-right: 30px;
+}
+#efield    {
+	font-family: "Myriad Pro", sans-serif;
+	font-weight: 400;
+	color: #666666;
+	padding-top: 12px;
+	padding-bottom: 12px;
+	width: 250px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 20px;
+	display: block;
+	font-size: 22px;
+	padding-left: 13px;
+	padding-right: 13px;
+}
+h2   {
+	display: block;
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+	font-size: 20px;
+	text-align: center;
+	font-family: "Myriad Pro", sans-serif;
+	font-weight: 700;
+	margin-top: -7px;
+	color: #FFFFFF;
+	text-shadow: 0px 1px #333333;
+}
+#logo {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+.description {
+	display: block;
+	width: 88%;
+	font-family: "Myriad Pro", sans-serif;
+	color: #000000;
+	font-size: 14px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	-webkit-box-shadow: 0px 0px;
+	box-shadow: 0px 0px;
+	text-shadow: 0px 1px rgba(255,255,255,.4);
+	max-width: 500px;
+}
+input {
+    -webkit-appearance: none;
+    border-radius: 0;
+}
+sup {
+	font-size: 50%;
+}
+.mobileonly {
+	display: none;
+}
+
+
+.twitter-follow-button {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.blog    {
+	display: block !important;
+	font-family: "Myriad Pro", sans-serif!important;
+	font-weight: 700!important;
+	color: #FFFFFF!important;
+	border-radius: 4px!important;
+	background-color: #092f87!important;
+	padding-top: 13px!important;
+	padding-bottom: 13px!important;
+	border-width: 0px!important;
+	font-size: 18px!important;
+	margin-top: 15px!important;
+	margin-left: auto!important;
+	margin-right: auto!important;
+	cursor: pointer!important;
+	padding-left: 10px;
+	padding-right: 10px;
+	text-decoration: none;
+	text-align: right;
+	width: 80px;
+	background-image: url(img/bubble.jpg);
+	background-position: 5px 5px;
+	background-repeat: no-repeat;
+	margin-bottom: 20px;
+}
+
+.terms {
+	display: block;
+	width: 88%;
+	font-family: "Myriad Pro", sans-serif;
+	color: #000000;
+	font-size: 14px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: left;
+	-webkit-box-shadow: 0px 0px;
+	box-shadow: 0px 0px;
+	text-shadow: 0px 1px rgba(255,255,255,.4);
+	max-width: 800px;
+}
+
+
+.badge {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 15px;
+}
+
+.description a {
+	text-decoration: none;
+}

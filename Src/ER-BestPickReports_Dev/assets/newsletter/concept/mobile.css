@@ -1,0 +1,145 @@
+@charset "utf-8";
+@charset "utf-8";
+/* CSS Document */
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	background-color: #f3f8fe;
+	font-family: "Myriad Pro", sans-serif;
+	font-size: 18px;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+/* Style Start */
+#top_bg {
+	background-image: url(img/m_bg.jpg);
+	background-repeat: repeat-x;
+	margin: 0px;
+	padding: 0px;
+	display: none;
+}
+#m_header {
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 0px;
+	width: 100%;
+	height: auto;
+}
+
+#d_header {
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 0px;
+	display: none;
+}
+#wrapper {
+	margin-right: auto;
+	margin-left: auto;
+	width: 95%;
+}
+#shortdesc {
+	padding: 0px;
+	width: 100%;
+	margin-top: 5px;
+	text-align: center;
+}
+.post {
+	background-image: url(img/m_post.png);
+	padding: 0px;
+	margin-top: 30px;
+	overflow-y: auto;
+	width: 303px;
+	height: 252px;
+	background-size: contain;
+	margin-left: auto;
+	margin-right: auto;
+}
+.post_title {
+	font-size: 13px;
+	font-weight: 700;
+	padding: 0px;
+	width: 180px;
+	margin-top: 30px;
+	margin-left: 88px;
+}
+.post_author {
+	font-size: 12px;
+	color: #999999;
+	margin-top: 20px;
+	margin-left: 140px;
+	width: 130px;
+	height: 25px;
+}
+.post_desc {
+	font-size: 12px;
+	color: rgba(0,0,0,1);
+	padding: 0px;
+	height: 45px;
+	margin-top: 15px;
+	margin-left: 140px;
+	width: 130px;
+	overflow-x: hidden;
+	overflow-y: hidden;
+}
+.view_all {
+	width: 100%;
+	clear: both;
+	text-align: center;
+	color: #002f87;
+	font-size: 14px;
+}
+#footer {
+	padding: 0px;
+	clear: both;
+	height: 250px;
+	width: 100%;
+	background-color: #002f87;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-top: 50px;
+}
+.d_only {
+	display: none;
+}

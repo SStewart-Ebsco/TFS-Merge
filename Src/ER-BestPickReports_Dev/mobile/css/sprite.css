@@ -1,0 +1,197 @@
+.sprite {
+    background-image: url('/mobile/images/sprite.png');
+    background-repeat: no-repeat;
+    display: block;
+}
+
+.ad-image {
+    width: 195px;
+    height: 322px;
+    background-position: -10px -10px;
+}
+
+.arrow-up {
+    width: 16px;
+    height: 10px;
+    background-position: -225px -10px;
+}
+
+.categoriesList-separator-line {
+    width: 1px;
+    height: 4px;
+    background-position: -261px -10px;
+}
+
+.category-article_item {
+    width: 31px;
+    height: 40px;
+    background-position: -282px -10px;
+}
+
+.category-btn_emailmultiple {
+    width: 270px;
+    height: 94px;
+    background-position: -333px -10px;
+}
+
+.category-call {
+    width: 18px;
+    height: 17px;
+    background-position: -623px -10px;
+}
+
+.category-email {
+    width: 24px;
+    height: 16px;
+    background-position: -225px -47px;
+}
+
+.category-info {
+    width: 16px;
+    height: 16px;
+    background-position: -623px -47px;
+}
+
+.checkbox-checked {
+    width: 14px;
+    height: 14px;
+    background-position: -659px -47px;
+}
+
+.contractor-call {
+    width: 22px;
+    height: 21px;
+    background-position: -269px -81px;
+}
+
+.contractor-email {
+    width: 29px;
+    height: 20px;
+    background-position: -623px -83px;
+}
+
+.home-example-post-background {
+    width: 294px;
+    height: 160px;
+    background-position: -225px -124px;
+}
+
+.home-example-post-image {
+    width: 105px;
+    height: 90px;
+    background-position: -539px -124px;
+}
+
+.home-line-triangle-bottom-center {
+    width: 60px;
+    height: 33px;
+    background-position: -539px -234px;
+}
+
+.home-line-triangle-top-center {
+    width: 60px;
+    height: 22px;
+    background-position: -539px -287px;
+}
+
+.home-logo {
+    width: 103px;
+    height: 103px;
+    background-position: -225px -329px;
+}
+
+.home-logo-shine {
+    width: 320px;
+    height: 255px;
+    background-position: -348px -329px;
+}
+
+.home-newsletter {
+    width: 66px;
+    height: 67px;
+    background-position: -10px -604px;
+}
+
+.home-request {
+    width: 70px;
+    height: 75px;
+    background-position: -693px -10px;
+}
+
+.home-thumbtack {
+    width: 17px;
+    height: 25px;
+    background-position: -693px -105px;
+}
+
+.menu-app-image {
+    width: 80px;
+    height: 80px;
+    background-position: -664px -150px;
+}
+
+.menu-blog-image {
+    width: 80px;
+    height: 80px;
+    background-position: -96px -604px;
+}
+
+.menu-contact_us-image {
+    width: 80px;
+    height: 80px;
+    background-position: -196px -604px;
+}
+
+.menu-faqs-image {
+    width: 116px;
+    height: 116px;
+    background-position: -296px -604px;
+}
+
+.menu-homeowner_testimonials-image {
+    width: 116px;
+    height: 116px;
+    background-position: -432px -604px;
+}
+
+.menu-learning_center-image {
+    width: 80px;
+    height: 80px;
+    background-position: -568px -604px;
+}
+
+.menu-newlsetter_signup-image {
+    width: 80px;
+    height: 80px;
+    background-position: -668px -604px;
+}
+
+.menu-our_story-image {
+    width: 116px;
+    height: 116px;
+    background-position: -783px -10px;
+}
+
+.menu-request_guide-image {
+    width: 80px;
+    height: 80px;
+    background-position: -764px -146px;
+}
+
+.menu-research_methodology-image {
+    width: 116px;
+    height: 116px;
+    background-position: -764px -246px;
+}
+
+.post-calendar {
+    width: 30px;
+    height: 30px;
+    background-position: -864px -146px;
+}
+
+.ribbon-banner-left {
+    width: 42px;
+    height: 40px;
+    background-position: -10px -382px;
+}

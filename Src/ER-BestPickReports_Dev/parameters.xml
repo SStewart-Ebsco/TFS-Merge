@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<parameters>
+
+  <!--Database-->
+  <parameter name="ConnString-Web.config Connection String"
+             defaultValue="Server=ISSHQDBSQL01D\ESWS_BSDG_Dev1;Database=parameters;Trusted_Connection=True;"
+             tags="ConnectionString">
+    <parameterEntry kind="XmlFile"
+                    scope="\web\.config"
+                    match="//configuration/connectionStrings/add[@name='ConnString']/@connectionString" />
+  </parameter>
+
+
+  <!--Website-->
+  <parameter name="IIS Web Application Name" defaultValue="off" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match=".*" />
+  </parameter>
+
+  <!--SMS: Each individual rule could be updated to re-write the correct URL, but that seems like a pain -->
+  <!--<parameter name="rewriteRule-RedirectToWww">
+    <parameterEntry kind="XmlFile"
+                    scope="\web\.config"
+                    match="//configuration/system.webServer/rewrite/rules/rule[@name='Redirect to WWW']/action[@type='Redirect']/@url"/>
+  </parameter>-->
+
+
+  <!--SMS: Hopefully, just setting the Action 'Type' of every rule to 'none' will work, instead -->
+  <parameter name="rewriteRule-Redirect">
+    <parameterEntry kind="XmlFile"
+                    scope="\web\.config"
+                    match="//configuration/system.webServer/rewrite/rules/rule/action[@type='Redirect']/@type"/>
+  </parameter>
+
+
+
+  <!--Disable debug-->
+  <parameter name="Config-Debug" description="Debug compilation option." defaultValue="false">
+    <parameterEntry kind="XmlFile" scope="\\web\.config" match="//compilation/@debug" />
+  </parameter>
+
+
+</parameters>

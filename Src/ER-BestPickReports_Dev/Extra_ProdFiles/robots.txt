@@ -1,0 +1,10 @@
+# robots.txt for www.bestpickreports.com
+User-agent: *
+Disallow: /bin/
+Disallow: /blog/Scripts/
+Disallow: /default.aspx?redirect=false
+Disallow: /allareas.aspx*
+Disallow: /inlinecontent.aspx*
+Disallow: /testimonials.htm*
+Disallow: *HiddenField*
+Sitemap: http://www.bestpickreports.com/sitemap.xml

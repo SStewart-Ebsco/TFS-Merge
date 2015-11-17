@@ -1,0 +1,9 @@
+﻿.pagecontent 
+{
+    max-width: 100%;
+}
+.pagecontent a
+{
+    color: #002f87;
+    text-decoration: underline;
+}

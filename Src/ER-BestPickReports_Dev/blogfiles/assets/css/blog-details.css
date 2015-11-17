@@ -1,0 +1,44 @@
+.details-fieldset
+{
+	padding: 10px;
+	border: 1px solid #000;
+}
+.details-fieldset-legend
+{
+	padding: 0 10px;
+	font-size: 14px;
+}
+.details-links
+{
+
+}
+.details-links-item
+{
+	display: inline-block;
+	width: 33%;
+}
+
+
+.details-block
+{
+	display: block;
+	width: 100%;
+}
+.details-block-header
+{
+	margin-top: 20px;
+}
+.details-primary
+{
+	float: left;
+	width: 686px;
+}
+.details-author
+{
+	float: left;
+	width: 294px;
+}
+.details-author textarea
+{
+	width: 294px;
+}

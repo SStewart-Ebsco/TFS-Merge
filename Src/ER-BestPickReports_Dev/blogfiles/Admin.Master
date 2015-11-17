@@ -1,0 +1,130 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Admin.master.cs" Inherits="ER_BestPickReports_Dev.blogfiles.Admin" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--[if IE 7]>    <html class="ie ie7" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="ie ie8" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"> <![endif]-->
+<!--[if IE 9]>    <html class="ie ie9" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"> <![endif]-->
+<!--[if IE 10]>    <html class="ie ie10" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"> <![endif]-->
+<!--[if gt IE 10]><!--><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"> <!--<![endif]-->
+    <head runat="server">
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="apple-itunes-app" content="app-id=494057962">
+        <link rel="SHORTCUT ICON" href="http://www.bestpickreports.com/favicon.ico"/>
+        <asp:ContentPlaceHolder ID="head" runat="server">
+            <%= System.Web.Optimization.Styles.Render("~/bundles/blog-desktop/master")%>
+        </asp:ContentPlaceHolder>
+        <link rel="stylesheet" href="/blogfiles/assets/css/override-style.css" type="text/css" media="screen, projection" />
+
+	    <!-- this script should be placed in the header section to override default fonts in a quicker way -->
+        <script>
+            (function (d) {
+                var config = {
+                    kitId: 'fgn0ait',
+                    scriptTimeout: 3000
+                },
+            h = d.documentElement, t = setTimeout(function () { h.className = h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive"; }, config.scriptTimeout), tk = d.createElement("script"), f = false, s = d.getElementsByTagName("script")[0], a; h.className += " wf-loading"; tk.src = '//use.typekit.net/' + config.kitId + '.js'; tk.async = true; tk.onload = tk.onreadystatechange = function () { a = this.readyState; if (f || a && a != "complete" && a != "loaded") return; f = true; clearTimeout(t); try { Typekit.load(config) } catch (e) { } }; s.parentNode.insertBefore(tk, s)
+            })(document);
+        </script> 
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    </head>
+    <body runat="server" id="bodytag">
+        <!-- Google Tag Manager -->
+        <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-NFGQ6Z"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <script>
+            (function (w, d, s, l, i) {
+                w[l] = w[l] || []; w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+                var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src = '//www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+            })(window, document, 'script', 'dataLayer', 'GTM-NFGQ6Z');
+        </script>
+        <!-- End Google Tag Manager -->
+
+        <form id="form1" runat="server">
+            <fieldset>
+                <div class="wrapper">
+                    <div id="container">
+		                <div id="header">
+		                    <div class="container">
+			                    <asp:HyperLink runat="server" ID="LogoLinkGlobal" class="logoGlobal" rel="nofollow" ><asp:Image runat="server" ID="LogoGlobal" ImageUrl="images/header/logoGlobal.png" AlternateText="Best Pick Reports" ToolTip="Best Pick Reports" ></asp:Image></asp:HyperLink>
+			                    <asp:HyperLink runat="server" ID="LogoLinkBlog" class="logoBlog" rel="nofollow" ><label>Home Improvement</label><br/><label class="blogLogo">blog</label></asp:HyperLink>
+                            </div>
+		                </div><!-- header -->
+                        
+                        <nav id="menu">
+                            <div class="container">
+                                <div class="menu-text">
+                                    <h3>Content Management System</h3>
+                                </div>
+                            </div>
+                        </nav>
+
+                        <div class="container"><!--temp-->
+			                <div id="content" class="content">
+		        		        <div class="column">
+					                <div class="column-top"></div>
+					                                          
+					                <div class="column-body">                                                                                                                                                                                                                                                                                              <div class="column-body">
+						                <div class="pad">
+								            <asp:Panel ID="TopAdds" CssClass="ads top-adds" runat="server">
+                                                <!-- Top Banner -->
+                                                <ins class="adsbygoogle"
+                                                        style="display:inline-block;width:970px;height:90px"
+                                                        data-ad-client="ca-pub-6817694749431625"
+                                                        data-ad-slot="5952532795"></ins>
+                                                <script>
+                                                    (adsbygoogle = window.adsbygoogle || []).push({});
+                                                </script>
+                                            </asp:Panel>
+
+							                <asp:Panel ID="Mainbar" CssClass="mainbar" runat="server">
+                                                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                                                </asp:ContentPlaceHolder>
+
+                                                <asp:Panel CssClass="ads bottom-adds" runat="server" ID="BottomAdds" Visible="False">
+                                                    <!-- Desktop Bottom Banner -->
+                                                    <ins class="adsbygoogle"
+                                                            style="display:inline-block;width:468px;height:60px"
+                                                            data-ad-client="ca-pub-6817694749431625"
+                                                            data-ad-slot="8905999194"></ins>
+                                                    <script>
+                                                        (adsbygoogle = window.adsbygoogle || []).push({});
+                                                    </script>
+                                                </asp:Panel>
+                                            </asp:Panel><!-- mainbar -->
+
+			                                <asp:Panel ID="Sidebar" runat="server" CssClass="sidebar">
+								                <asp:Panel ID="SideBarAdds" CssClass="ads sidebar-adds" runat="server">
+                                                    <!-- Side Square -->
+                                                    <ins class="adsbygoogle"
+                                                            style="display:inline-block;width:250px;height:250px"
+                                                            data-ad-client="ca-pub-6817694749431625"
+                                                            data-ad-slot="7429265997"></ins>
+                                                    <script>
+                                                        (adsbygoogle = window.adsbygoogle || []).push({});
+                                                    </script>
+                                                </asp:Panel>
+							                </asp:Panel><!-- sidebar -->
+
+                                        </div><!-- pad -->
+
+					                </div><!-- column-body -->
+					            
+                                    <div class="column-bottom"></div>
+				                </div><!-- column -->
+			                </div><!-- content -->
+                        </div><!--.container-->
+                        
+                    </div>
+                    </div>
+                </div>
+            </fieldset>
+            <asp:ScriptManager ID="ScriptManager1" runat="server" ScriptMode="Debug"></asp:ScriptManager>
+        </form>
+        <asp:ContentPlaceHolder ID="HeadPlaceHolder" runat="server">
+            <%= System.Web.Optimization.Scripts.Render("~/Scripts/jquery") %>
+            <script type="text/javascript" src="/js/jquery.ui.js"></script>
+            <%= System.Web.Optimization.Scripts.Render("~/Scripts/blog-desktop/main")%>
+        </asp:ContentPlaceHolder>
+    </body>
+</html>

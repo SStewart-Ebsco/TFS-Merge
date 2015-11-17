@@ -1,0 +1,191 @@
+﻿
+.registration-form {
+	border: 3px solid #d7d6d6;
+	width: 530px;
+	/*margin: 0 0 0 -275px;
+	position: absolute;
+	top: 60px;
+	left: 50%;*/
+	border-radius: 10px;
+	z-index: 99999;
+	padding: 8px 0 0;
+	background: #ffffff;
+	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNkMGQwZDAiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+	background: -moz-linear-gradient(top,  #ffffff 0%, #e5e5e5 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e5e5e5));
+	background: -webkit-linear-gradient(top,  #ffffff 0%,#e5e5e5 100%);
+	background: -o-linear-gradient(top,  #ffffff 0%,#e5e5e5 100%);
+	background: -ms-linear-gradient(top,  #ffffff 0%,#e5e5e5 100%);
+	background: linear-gradient(to bottom,  #ffffff 0%,#e5e5e5 100%);
+}
+
+.registration-form .btn-close {
+	background: url(/blogfiles/images/sidebar/ico_close.png) no-repeat;
+	height: 38px;
+	width: 38px;
+	position: absolute;
+	display: block;
+	top: -19px;
+	right: -24px;
+	z-index: 5;
+}
+
+.registration-form .btn-close2 {
+	background: url(/blogfiles/images/sidebar/ico_close.png) no-repeat;
+	height: 38px;
+	width: 38px;
+	position: absolute;
+	display: block;
+	top: -19px;
+	right: -24px;
+	z-index: 5;
+}
+
+.registration-form .note {
+	font-size: 17px;
+	line-height: 20px;
+	padding: 18px 30px 20px;
+	border-top: 1px solid #fff;
+}
+
+.registration-form fieldset {
+	float: left;
+	padding: 0 11px 15px 0;
+}
+
+.registration-form fieldset.submit {
+	overflow: hidden;
+	float: none;
+	padding: 0 0 10px 0;
+	clear: both;
+	margin-right:26px;
+}
+
+.registration-form .cancel {
+	float: right;
+	padding: 10px 0 0 0;
+	margin: 0 0 0 -80px;
+	font-size: 15px;
+	color: #666;
+}
+
+.registration-form .cancel a {
+	color: #666;
+}
+
+.registration-form label {
+	display: block;
+	padding: 0 0 2px;
+	font-size: 17px;
+}
+
+.registration-form label.req {
+	color: #F00;
+}
+
+.registration-form textarea {
+	float: left;
+	background: none;
+	border: 0;
+	padding: 5px 9px;
+	width: 452px;
+	outline: 0;
+	height: 66px;
+	background: #fff;
+	border: 1px solid #cccccc;
+	box-shadow: 0 1px 0 1px #fff;
+	border-radius: 5px;
+	line-height: 16px;
+}
+
+.registration-form input[type=submit] {
+	display: block;
+	border: 0;
+	background: url(/blogfiles/images/sidebar/btn_submit.png) no-repeat;
+	width: 127px;
+	height: 34px;
+	text-align: center;
+	line-height: 34px;
+	color: #fff;
+	font-size: 19px;
+	margin: auto;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+}
+
+.registration-form input[type=text] {
+	float: left;
+	background: none;
+	border: 0;
+	padding: 5px 9px;
+	width: 210px;
+	outline: 0;
+	height: 16px;
+	background: #fff;
+	border: 1px solid #cccccc;
+	box-shadow: 0 1px 0 1px #fff;
+	border-radius: 5px;
+	line-height: 16px;
+}
+
+.registration-form .short input[type=text] {
+	width: 103px;
+}
+
+.registration-form .full input[type=text] {
+	width: 452px;
+}
+
+.registration-form .medium input[type=text] {
+	width: 340px;
+}
+
+.registration-form .half input[type=text] {
+	width: 154px;
+}
+
+.registration-form h3 {
+	font-size: 21px;
+	line-height: 28px;
+	padding: 0 0 10px;
+	border-bottom: 1px solid #d2d1d1;
+	text-align: center;
+}
+
+.registration-form .fields {
+	padding: 0 0 0 30px;
+}
+
+.registration-form .reqpanel {
+	float: left;
+	padding: 0 0 15px 0;
+}
+
+.registration-form h3 strong {
+	display: block;
+	font-family: 'myriad-pro';
+	font-weight: 700;
+}
+
+.fields td input[type=checkbox] { float:left; margin-right:4px; }
+.fields td .alert { float:left; margin-right:4px; }
+.fields table { margin-bottom:15px; width:100%; }
+.fields td { padding: 4px 0; width:100%; }
+.fields .bnote { text-align:center; font-size:14px; font-style:italic; margin:0 30px 15px 0; }
+.fields .rednote { color:#FF0000; font-style:normal; }
+.registration-form .emptynote {
+	font-size: 17px;
+	line-height: 20px;
+	padding: 18px 30px 0;
+	border-top: 1px solid #fff;
+}
+
+.overlay {
+	position: fixed;
+	background: url(/blogfiles/images/sidebar/bg_overlay.png) repeat;
+	top: 0;
+	z-index: 9999;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}

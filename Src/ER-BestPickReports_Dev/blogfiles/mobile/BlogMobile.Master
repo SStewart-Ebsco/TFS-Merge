@@ -1,0 +1,656 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="BlogMobile.master.cs"
+    Inherits="ER_BestPickReports_Dev.blogfiles.mobile.BlogMobile" %>
+
+<%@ Register TagPrefix="cc1" Namespace="AjaxControlToolkit" Assembly="AjaxControlToolkit, Version=4.1.7.1213, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e" %>
+<!DOCTYPE html>
+<html lang="en">
+<head id="Head1" runat="server">
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="apple-itunes-app" content="app-id=494057962">
+    <!-- add this line to viewport value to enable pinch zoom :", maximum-scale=1, user-scalable=no"-->
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+        <%= System.Web.Optimization.Styles.Render("~/bundles/blog-mobile/master")%>
+    </asp:ContentPlaceHolder>
+    <link rel="stylesheet" href="/blogfiles/assets/css/override-style.css" type="text/css" media="screen, projection" />
+	<!-- this script should be placed in the header section to override default fonts in a quicker way -->
+    <script>
+        (function (d) {
+            var config = {
+                kitId: 'fgn0ait',
+                scriptTimeout: 3000
+            },
+        h = d.documentElement, t = setTimeout(function () { h.className = h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive"; }, config.scriptTimeout), tk = d.createElement("script"), f = false, s = d.getElementsByTagName("script")[0], a; h.className += " wf-loading"; tk.src = '//use.typekit.net/' + config.kitId + '.js'; tk.async = true; tk.onload = tk.onreadystatechange = function () { a = this.readyState; if (f || a && a != "complete" && a != "loaded") return; f = true; clearTimeout(t); try { Typekit.load(config) } catch (e) { } }; s.parentNode.insertBefore(tk, s)
+        })(document);
+    </script> 
+</head>
+<body runat="server" id="Body">
+
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-NFGQ6Z"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>
+    (function (w, d, s, l, i) {
+        w[l] = w[l] || []; w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src = '//www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-NFGQ6Z');
+</script>
+<!-- End Google Tag Manager -->
+
+    <form id="form1" runat="server" >
+    <div class="content-container">
+    <asp:ScriptManager ID="ScriptManager" runat="server" EnablePartialRendering="true">
+        <Services>
+            <asp:ServiceReference Path="~/BlogService.svc" InlineScript="False" />
+        </Services>
+    </asp:ScriptManager>
+    <div class="top-header">
+        <a class="logo" href="/" rel="nofollow" ></a>
+        <a class="header" href="/blog?redirect=false" rel="nofollow" ></a>
+    </div>
+    <div class="searchbar container">
+        <div class="searchbar-input-group">
+            <asp:TextBox runat="server" ID="SearchBox" placeholder="Search" CssClass="searchbar-field"></asp:TextBox>
+            <asp:Button ID="Button1" runat="server" OnClick="SearchButton_Click" CssClass="searchbar-button" />
+        </div>
+        <button id="menu-button" class="menu-button">
+        </button>
+    </div>
+    <ul id="menu" class="menu menu-hidden">
+        <li class="menu-item <%=this.CategoriesMenuState %>">
+            <div class="menu-item-label container">
+                <span class="menu-item-label-text">Filter Articles By Category</span>
+                <div class="menu-item-expand-button">
+                </div>
+            </div>
+            <div class="menu-item-content">
+                <div class="submenu-columns">
+                    <div class="submenu-column">
+                        <asp:ListView runat="server" ID="CategoriesList1" OnItemDataBound="CategoriesList1_ItemDataBound">
+                            <LayoutTemplate>
+                                <ul class="submenu-list">
+                                    <li runat="server" id="itemPlaceholder" />
+                                </ul>
+                            </LayoutTemplate>
+                            <ItemTemplate>
+                                <li class="submenu-list-item">
+                                    <asp:HyperLink runat="server" ID="CatLink" CssClass="submenu-label"></asp:HyperLink>
+                                </li>
+                            </ItemTemplate>
+                            <EmptyDataTemplate>
+								<div class="submenu-list-empty">
+									Please, choose location to see all available Categories.
+								</div>
+							</EmptyDataTemplate>
+                        </asp:ListView>
+                    </div>
+                    <div class="submenu-column">
+                        <asp:ListView runat="server" ID="CategoriesList2" OnItemDataBound="CategoriesList2_ItemDataBound">
+                            <LayoutTemplate>
+                                <ul class="submenu-list">
+                                    <li runat="server" id="itemPlaceholder" />
+                                </ul>
+                            </LayoutTemplate>
+                            <ItemTemplate>
+                                <li class="submenu-list-item">
+                                    <asp:HyperLink runat="server" ID="CatLink" CssClass="submenu-label"></asp:HyperLink>
+                                </li>
+                            </ItemTemplate>
+                        </asp:ListView>
+                    </div>
+                    <br style="clear: left;" />
+                </div>
+            </div>
+        </li>
+        <li class="menu-item" runat="server" ID="ViewLocalBestPicksMenuItem">
+            <div class="menu-item-label container">
+                <span class="menu-item-label-text">View Local Best Picks</span>
+                <div class="menu-item-expand-button">
+                </div>
+            </div>
+            <div class="menu-item-content container">
+                <span class="localpicks-header">Call or Email</span> <span class="localpicks-text">A-rated
+                    companies recommended by your neighbors</span>
+                <asp:DropDownList CssClass="localpicks-category" runat="server" ID="CategoriesChoice"
+                    OnSelectedIndexChanged="CategoriesChoice_SelectedIndexChanged" AutoPostBack="True"
+                    EnableViewState="True" ClientIDMode="Static">
+                </asp:DropDownList>
+                <asp:UpdatePanel runat="server" ID="MenuUpdatePanel">
+                    <ContentTemplate>
+                        <asp:Panel CssClass="topcategories-default" ID="TopCategories" runat="server">
+                            <span class="topcategories-header">Top Categories</span>
+                            <ul class="topcategories-list">
+                                <asp:Repeater ID="TopCategoriesList" runat="server">
+                                    <ItemTemplate>
+                                        <li><span class="topcategories-list-item" onclick="$('#CategoriesChoice').val('<%# Eval("Id") %>').change();">
+                                            <%# Eval("Name") %></span> </li>
+                                    </ItemTemplate>
+                                </asp:Repeater>
+                            </ul>
+                        </asp:Panel>
+                        <asp:Panel runat="server" ID="Contractors" CssClass="topcategories-category">
+                            <ul class="companies">
+                                <asp:Repeater ID="ContractorsList" runat="server">
+                                    <ItemTemplate>
+                                        <li class="company" style='<%# Container.ItemIndex <= 2 ? "": "display: none" %>'>
+                                            <div class="company-info">
+                                                <span class="company-name" rel="nofollow"><%# Eval("name") %></span>
+                                                <a class="company-phone" href="tel:<%# Eval("phone") %>"><%# Eval("phone") %></a>
+                                                <input type="hidden" class="company-email" value='<%# Eval("email")%>' />
+                                                <input type="hidden" class="company-cid" value='<%# Eval("cid") %>' />
+                                            </div>
+                                            <%--<asp:Button CssClass="company-email" ID="SingleEmailBtn" runat="server" Text="Email" OnClick="SingleEmailButton_Click" CommandArgument='<%# Eval("name") %>'></asp:Button>--%>
+                                            <a href="#" class="company-email-link">
+                                                <div class="company-email-button">
+                                                </div>
+                                                <span class="company-email-button-text">Email</span> </a></li>
+                                    </ItemTemplate>
+                                </asp:Repeater>
+                            </ul>
+                            <br class="clear" />
+                            <button runat="server" id="ViewMoreButton" class="category-more">View More</button>
+                            <asp:Panel runat="server" ID="ChooseEmailPanel" CssClass="modal-win-center">
+                                <div class="modal-win-bg"></div>
+                                <div class="modal-win-close"></div>
+                                <div class="modal-win">
+                                    <div class="modal-win-body">
+                                        <span class="modal-win-header">Please select which Best Pick companies you would like to contact about your project:</span>
+                                        <hr class="modal-win-line" />
+                                        <asp:ListView runat="server" ID="EmailContractorList" OnItemDataBound="EmailContractorList_ItemDataBound">
+                                            <LayoutTemplate>
+                                                <ul class="modal-win-list">
+                                                    <asp:PlaceHolder runat="server" ID="itemPlaceHolder"></asp:PlaceHolder>
+                                                </ul>
+                                            </LayoutTemplate>
+                                            <ItemTemplate>
+                                                <li>
+                                                    <asp:CheckBox runat="server" ID="ContractorEmailID" ValidationGroup="GroupEmail" CssClass="modal-win-checkbox" />
+                                                    <asp:Label runat="server" ID="ContractorLabel" CssClass="modal-win-list-text js-contractor-label"></asp:Label>
+                                                    <asp:HiddenField runat="server" ID="HiddenListID" />
+                                                </li>
+                                            </ItemTemplate>
+                                        </asp:ListView>
+                                        <span runat="server" id="alertnote" visible="false" class="modal-win-note">*Note: Not all companies accept email information requests; these companies prefer to be contacted by telephone.</span>
+                                        <p runat="server" id="errornote" visible="false" class="bnote rednote">You must select at least one company in order to continue.</p>
+                                        <button id="ContractorsModalContinue" class="modal-button">Continue</button>
+                                    </div>
+                                </div>
+                            </asp:Panel>
+                        </asp:Panel>
+                        <asp:Panel runat="server" CssClass="savetime" ID="MultipleEmailPanel">
+                            <div class="savetime-background">
+                                <span class="savetime-header">Save Time!</span> <span class="savetime-text">Contact
+                                    Multiple Best Pick Companies!</span>
+                               </div>
+                            </asp:Panel>
+                    </ContentTemplate>
+                </asp:UpdatePanel>
+            </div>
+        </li>
+        <li class="menu-item ">
+            <div class="menu-item-label container">
+                <span class="menu-item-label-text">Newsletter Sign-Up</span>
+                <div class="menu-item-expand-button">
+                </div>
+            </div>
+            <div class="menu-item-content">
+                <span class="menu-item-text">Have Our Articles Delivered To Your Inbox Every Month</span>
+                <div class="subscribe-form">
+                    <input placeholder="Email" type="email" class="textfield" id="subscribe-email">
+                    <button id="subscribe-button" class="button subscribe-button">
+                        Subscribe</button>
+                </div>
+            </div>
+        </li>
+        <li class="menu-item ">
+            <div class="menu-item-label container">
+                <span class="menu-item-label-text">Change Location</span>
+                <div class="menu-item-expand-button">
+                </div>
+            </div>
+            <div class="menu-item-content">
+                <div class="zipcode-form">
+                    <span class="zipcode-text">Please Enter Your Zipcode:</span>
+                    <div class="control-group">                                                             
+                        <asp:TextBox runat="server" ID="ZipCodeChange" Text=""
+                            CssClass="textfield"></asp:TextBox>
+                        <asp:Button runat="server" ID="ZipCodeChangeButton" OnClick="ZipCodeChangeButton_Click" causesvalidation="true"
+                            Text="GO" CssClass="button" />
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+    <div class="current-location">
+        <i class='fa fa-map-marker'></i><span class="current-location-label"> Current Location:</span>
+        <asp:Label ID="CurrentLocation" runat="server" CssClass="current-location-text">Flower Mound/ Lewisville/HighMound/ Lewisville/High</asp:Label>
+        <div class="current-location-ellipsize">
+        </div>
+    </div>
+    <div class="contactwith">
+        <span class="contactwith-text">Connect With Us</span> <a href="https://www.facebook.com/BestPickReports"
+            class="contactwith-network facebook"></a><a href="https://twitter.com/bestpickreports"
+                class="contactwith-network twitter"></a><a href="https://plus.google.com/115147162962806414209/posts"
+                    class="contactwith-network googleplus"></a>
+    </div>
+    <div class="container">
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder>
+
+        <asp:Button runat="server" CssClass="request-a-topic center-block" ID="RequestTopic" Visible="false"/>
+    </div>
+    <div class="ads footer-ad" runat="server" id="FooterAd" >
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <!-- Mobile Banner -->
+        <ins class="adsbygoogle"
+             style="display:inline-block;width:320px;height:50px"
+             data-ad-client="ca-pub-6817694749431625"
+             data-ad-slot="1382732397"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    <div class="footer container">
+        <a herf="#" id="viewFullSiteLink" class="footer-viewfull">View Desktop Site</a>
+        <div class="contactwith">
+            <span class="contactwith-text">Connect With Us</span> <a href="https://www.facebook.com/BestPickReports"
+                class="contactwith-network facebook"></a><a href="https://twitter.com/bestpickreports"
+                    class="contactwith-network twitter"></a><a href="https://plus.google.com/115147162962806414209/posts"
+                        class="contactwith-network googleplus"></a>
+        </div>
+        <hr class="footer-line" />
+        <span class="footer-prelogo-text">Independent Consumer Satisfaction Research and Ratings
+            By</span>
+        <div class="footer-ebsco-logo">
+        </div>
+        <span class="footer-subheader">Overview</span>
+        <hr class="footer-line">
+        <div class="footer-submenu">
+            <div class="submenu-columns footer-submenu">
+                <div class="submenu-column">
+                    <ul class="submenu-list">
+                        <li class="submenu-list-item">
+                            <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="http://www.bestpickreports.com/content/about-us"
+                                CssClass="submenu-label">Our Story</asp:HyperLink>
+                        </li>
+                        <li class="submenu-list-item">
+                            <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="http://www.bestpickreports.com/testimonials"
+                                CssClass="submenu-label">Homeowner Testimonials</asp:HyperLink>
+                        </li>
+                        <li class="submenu-list-item">
+                            <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="http://www.bestpickreports.com/content/methodology"
+                                CssClass="submenu-label">Research Methodology</asp:HyperLink>
+                        </li>
+                        <li class="submenu-list-item">
+                            <asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="http://www.bestpickreports.com/content/frequently-asked-questions#What%20is%20a%20Best%20Pick?"
+                                CssClass="submenu-label">What is a Best Pick?</asp:HyperLink>
+                        </li>
+                    </ul>
+                </div>
+                <div class="submenu-column">
+                    <ul class="submenu-list">
+                        <li class="submenu-list-item">
+                            <asp:HyperLink ID="HyperLink5" runat="server" NavigateUrl="http://www.bestpickreports.com/content/apps"
+                                CssClass="submenu-label">Mobile App Overview</asp:HyperLink>
+                        </li>
+                        <li class="submenu-list-item">
+                            <asp:HyperLink ID="HyperLink6" runat="server" NavigateUrl="http://www.bestpickreports.com/content/frequently-asked-questions"
+                                CssClass="submenu-label">FAQs</asp:HyperLink>
+                        </li>
+                        <li class="submenu-list-item">
+                            <asp:HyperLink ID="HyperLink7" runat="server" NavigateUrl="http://www.bestpickreports.com/blog"
+                                CssClass="submenu-label">Blog</asp:HyperLink>
+                        </li>
+                    </ul>
+                </div>
+                <br style="clear: left;" />
+            </div>
+        </div>
+        <span class="footer-subheader">Resources</span>
+        <hr class="footer-line">
+        <div class="footer-submenu">
+            <div class="submenu-columns">
+                <div class="submenu-column">
+                    <ul class="submenu-list">
+                        <li class="submenu-list-item">
+                            <asp:HyperLink ID="HyperLink8" runat="server" NavigateUrl="http://www.bestpickreports.com/requestaguide"
+                                CssClass="submenu-label">Request a Guide</asp:HyperLink>
+                        </li>
+                        <li class="submenu-list-item">
+                            <asp:HyperLink ID="HyperLink9" runat="server" NavigateUrl="http://www.bestpickreports.com/newsletter-sign-up"
+                                CssClass="submenu-label">E-Newsletter</asp:HyperLink>
+                        </li>
+                        <li class="submenu-list-item">
+                            <asp:HyperLink ID="HyperLink10" runat="server" NavigateUrl="http://www.bestpickreports.com/content/learning-center#tips"
+                                CssClass="submenu-label">Consumer Tips</asp:HyperLink>
+                        </li>
+                    </ul>
+                </div>
+                <div class="submenu-column">
+                    <ul class="submenu-list">
+                        <li class="submenu-list-item">
+                            <asp:HyperLink ID="HyperLink11" runat="server" NavigateUrl="http://www.bestpickreports.com/content/learning-center#insurance"
+                                CssClass="submenu-label">Insurance Information</asp:HyperLink>
+                        </li>
+                        <li class="submenu-list-item">
+                            <asp:HyperLink ID="HyperLink12" runat="server" NavigateUrl="http://www.bestpickreports.com/nominate-a-company"
+                                CssClass="submenu-label">Nominate a Company</asp:HyperLink>
+                        </li>
+                    </ul>
+                </div>
+                <br style="clear: left;" />
+            </div>
+        </div>
+        <span class="footer-subheader">Connect</span>
+        <hr class="footer-line">
+        <div class="footer-submenu">
+            <div class="submenu-columns footer-submenu">
+                <div class="submenu-column">
+                    <ul class="submenu-list">
+                        <li class="submenu-list-item"><a href="https://www.facebook.com/BestPickReports"
+                            class="footer-ico ico-facebook" target="_blank" rel="nofollow">Facebook</a>
+                        </li>
+                        <li class="submenu-list-item"><a href="https://twitter.com/bestpickreports" class="footer-ico ico-twitter"
+                            target="_blank" rel="nofollow">Twitter</a> </li>
+                        <li class="submenu-list-item"><a href="https://plus.google.com/115147162962806414209/posts"
+                            class="footer-ico ico-google" target="_blank" rel="nofollow">Google+</a> </li>
+                        <li class="submenu-list-item"><a href="http://itunes.apple.com/us/app/best-pick-reports/id494057962?mt=8"
+                            class="footer-ico ico-ios" target="_blank" rel="nofollow">Apple iOS App</a>
+                        </li>
+                        <li class="submenu-list-item"><a href="https://play.google.com/store/apps/details?id=com.brotherfish"
+                            class="footer-ico ico-android" target="_blank" rel="nofollow">Google Android App</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="submenu-column">
+                    <ul class="submenu-list">
+                        <li class="submenu-list-item">
+                            <asp:HyperLink ID="HyperLink13" runat="server" NavigateUrl="http://www.bestpickreports.com/content/contact-us"
+                                CssClass="submenu-label">Contact Us</asp:HyperLink>
+                        </li>
+                        <li class="submenu-list-item">
+                            <asp:HyperLink ID="HyperLink14" runat="server" NavigateUrl="http://www.bestpickreports.com/share-your-feedback"
+                                CssClass="submenu-label">Share Feedback</asp:HyperLink>
+                        </li>
+                    </ul>
+                </div>
+                <br style="clear: left;" />
+            </div>
+        </div>
+        <div class="footer-copyright">&copy;1997-<%= DateTime.Now.Year %> EBSCO Research LLC. All Rights Reserved.</div>
+    </div>
+    </div>
+    <%= System.Web.Optimization.Scripts.Render("~/Scripts/jquery") %>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <asp:ContentPlaceHolder ID="scripts" runat="server">
+    </asp:ContentPlaceHolder>
+    <%= System.Web.Optimization.Scripts.Render("~/Scripts/blog-mobile/global") %>
+    <!-- Modal windows -->
+
+        <asp:HiddenField runat="server" ID="EmailContractorID" Value="defaultvalue" />
+        <asp:HiddenField runat="server" ID="ContractorEmail" />
+        <asp:HiddenField runat="server" ID="MultipleEmailIDs" />
+        <div runat="server" id="ModalEmailForm" class="emailform">
+            <div class="emailform-content container">
+                <span class="emailform-header">You are requesting more information from:</span>
+                <asp:Label runat="server" ID="EmailContractorName" CssClass="emailform-header-company"></asp:Label>
+                <asp:HiddenField runat="server" ID="EmailFormContractorName"/>
+                <hr class="emailform-line" />
+                <span class="emailform-intro">Please fill out the following form completely:</span>
+                <div class="emailform-field-container fifty">
+                    <div class="emailform-field-label required">
+                        First Name:</div>
+                    <asp:TextBox runat="server" ID="Name" name="Name" type="text" CssClass="emailform-field"></asp:TextBox>
+                    <asp:requiredfieldvalidator id="NameFieldValidator"
+                        controltovalidate="Name"
+                        validationgroup="EmailFormGroup"
+                        errormessage="Enter your First Name"
+                        runat="Server">
+                    </asp:requiredfieldvalidator>
+                </div>
+                <div class="emailform-field-container fifty">
+                    <div class="emailform-field-label required">
+                        Last Name:</div>
+                    <asp:TextBox runat="server" ID="LastName" name="lastName" type="text" CssClass="emailform-field"></asp:TextBox>
+                    <asp:requiredfieldvalidator id="LastNameFieldValidator"
+                        controltovalidate="LastName"
+                        validationgroup="EmailFormGroup"
+                        errormessage="Enter your Last Name"
+                        runat="Server">
+                    </asp:requiredfieldvalidator>
+                </div>
+                <div class="emailform-field-container">
+                    <div class="emailform-field-label required">
+                        Street Address:</div>
+                    <asp:TextBox runat="server" ID="Address" Columns="38" name="streetAddress" type="text"
+                        CssClass="emailform-field"></asp:TextBox>
+                    <asp:requiredfieldvalidator id="AddressFieldValidator"
+                        controltovalidate="Address"
+                        validationgroup="EmailFormGroup"
+                        errormessage="Enter your Address"
+                        runat="Server">
+                    </asp:requiredfieldvalidator>
+                </div>
+                <div class="emailform-field-container sixty">
+                    <div class="emailform-field-label ">
+                        City:</div>
+                    <asp:TextBox runat="server" ID="City" name="city" type="text" CssClass="emailform-field"></asp:TextBox>
+                </div>
+                <div class="emailform-field-container forty">
+                    <div class="emailform-field-label required">
+                        Zip Code:</div>
+                    <asp:TextBox runat="server" ID="ZipForMail" Columns="10" name="zipCode" type="text"
+                        CssClass="emailform-field"></asp:TextBox>
+                    <asp:RegularExpressionValidator id="ZipFieldValidator"
+                        ValidationExpression="^[0-9]{5}$"
+                        controltovalidate="ZipForMail"
+                        validationgroup="EmailFormGroup"
+                        errormessage="Enter your Zip Code."
+                        runat="Server">
+                    </asp:RegularExpressionValidator>
+                </div>
+                <div class="emailform-field-container">
+                    <div class="emailform-field-label required">
+                        Email:</div>
+                    <asp:TextBox runat="server" ID="Email" Columns="30" name="email" type="text" CssClass="emailform-field"></asp:TextBox>
+                    <asp:RegularExpressionValidator id="EmailFieldValidator"
+                        controltovalidate="Email"
+                        ValidationExpression="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"
+                        validationgroup="EmailFormGroup"
+                        errormessage="Enter your Email correctly"
+                        runat="Server">
+                    </asp:RegularExpressionValidator>
+                </div>
+                <div class="emailform-field-container fifty ">
+                    <div class="emailform-field-label required">
+                        Primary Phone:</div>
+                    <asp:TextBox runat="server" ID="FormPhone" name="primaryPhone" type="phone" CssClass="emailform-field"></asp:TextBox>
+                    <asp:requiredfieldvalidator id="FormPhoneFieldValidator"
+                        controltovalidate="FormPhone"
+                        validationgroup="EmailFormGroup"
+                        errormessage="Enter your Primary Phone"
+                        runat="Server">
+                    </asp:requiredfieldvalidator>
+                </div>
+                <div class="emailform-field-container fifty">
+                    <div class="emailform-field-label">
+                        Alternate Phone:</div>
+                    <asp:TextBox runat="server" ID="FormPhone2" name="alternatePhone" type="text" CssClass="emailform-field"></asp:TextBox>
+                </div>
+                <div class="emailform-field-container">
+                    <div class="emailform-field-label required">
+                        Type of Work:</div>
+                    <asp:TextBox runat="server" ID="WorkType" Columns="38" name="typeOfWork" type="text"
+                        CssClass="emailform-field"></asp:TextBox>
+                    <asp:requiredfieldvalidator id="WorkTypeFieldValidator"
+                        controltovalidate="WorkType"
+                        validationgroup="EmailFormGroup"
+                        errormessage="Enter Type of Work"
+                        runat="Server">
+                    </asp:requiredfieldvalidator>
+                </div>
+                <div class="emailform-field-container">
+                    <div class="emailform-field-label required">
+                        Message:</div>
+                    <asp:TextBox runat="server" ID="Message" TextMode="MultiLine" Rows="3" Columns="41"
+                        name="message" type="text" CssClass="emailform-field multiline"></asp:TextBox>
+                    <asp:requiredfieldvalidator id="MessageFieldValidator"
+                        controltovalidate="Message"
+                        validationgroup="EmailFormGroup"
+                        errormessage="Enter Message"
+                        runat="Server">
+                    </asp:requiredfieldvalidator>
+                </div>
+            </div>
+            <asp:Panel runat="server" ID="ReqPanel" Visible="false" CssClass="reqpanel">
+                <asp:ValidationSummary ID="ValidationSummary1" runat="server" ValidationGroup="EmailFormGroup_DISABLED"/>
+                <p style="text-align: center; color: #ff0000;">
+                    *Please fill out all required fields correctly.</p>
+            </asp:Panel>
+            <div class="emailform-footer container">
+                <div class="emailform-buttons">
+                    <button id="cancelButton" class="emailform-button cancel-button">
+                        Cancel</button>
+                    <asp:Button runat="server" ID="SubmitEmailformButton" Text="Submit" OnClick="OK_EmailClick" CssClass="emailform-button submit-button"
+                        CausesValidation="False" ValidationGroup="EmailFormGroup"/>
+                </div>
+            </div>
+        </div>
+
+
+    <asp:Panel runat="server" ID="EmailComplete" CssClass="modal-win-center">
+        <div class="modal-win-bg">
+        </div>
+        <div class="modal-win-close">
+        </div>
+        <div class="modal-win">
+            <div class="modal-win-body">
+                <span class="modal-win-header">Success!</span>
+                <hr class="modal-win-line" />
+                <span class="modal-win-text">Your email request has been succesfully delivered.</span>
+                <button class="modal-button">
+                    Continue</button>
+            </div>
+        </div>
+    </asp:Panel>
+
+        <asp:panel id="UpdatePanelRequestTopic" runat="server">
+            <div>
+            <asp:Panel runat="server" ID="RequestTopicContainer">
+            <asp:LinkButton runat="server" ID="TopRequestCancel" OnClick="Cancel_RequestEmailClick" CssClass="btn-close2"></asp:LinkButton>
+        <div runat="server" id="RequesTopicEmailForm" class="emailform">
+            <div class="emailform-content container">
+                <span class="emailform-header">You are requesting a topic you would like to read about.</span>
+                <hr class="emailform-line" />
+                <span class="emailform-intro">Please fill out the following form completely:</span>
+                <div class="emailform-field-container fifty">
+                    <div class="emailform-field-label required">
+                        First Name:</div>
+                    <asp:TextBox runat="server" ID="NameInReq" name="NameInReq" type="text" CssClass="emailform-field"></asp:TextBox>
+                    <asp:requiredfieldvalidator id="NameInReqFieldValidator"
+                        controltovalidate="NameInReq"
+                        validationgroup="EmailFormGroup"
+                        errormessage="Enter your First Name"
+                        runat="Server">
+                    </asp:requiredfieldvalidator>
+                </div>
+                <div class="emailform-field-container fifty">
+                    <div class="emailform-field-label required">
+                        Last Name:</div>
+                    <asp:TextBox runat="server" ID="LastNameInReq" name="LastNameInReq" type="text" CssClass="emailform-field"></asp:TextBox>
+                    <asp:requiredfieldvalidator id="LastNameInReqFieldValidator"
+                        controltovalidate="LastNameInReq"
+                        validationgroup="EmailFormGroup"
+                        errormessage="Enter your Last Name"
+                        runat="Server">
+                    </asp:requiredfieldvalidator>
+                </div>
+                <div class="emailform-field-container">
+                    <div class="emailform-field-label required">
+                        Email:</div>
+                    <asp:TextBox runat="server" ID="EmailInReq" Columns="30" name="EmailInReq" type="email" CssClass="emailform-field"></asp:TextBox>
+                    <asp:requiredfieldvalidator id="EmailInReqFieldValidator"
+                        controltovalidate="EmailInReq"
+                        validationgroup="EmailFormGroup"
+                        errormessage="Enter your Email"
+                        runat="Server">
+                    </asp:requiredfieldvalidator>
+                </div>
+                <div class="emailform-field-container">
+                    <div class="emailform-field-label required">
+                        Subject:</div>
+                    <asp:TextBox runat="server" ID="Subject" Columns="30" name="Subject" type="text"
+                        CssClass="emailform-field"></asp:TextBox>
+                    <asp:requiredfieldvalidator id="SubjectFieldValidator"
+                        controltovalidate="Subject"
+                        validationgroup="EmailFormGroup"
+                        errormessage="Enter Subject"
+                        runat="Server">
+                    </asp:requiredfieldvalidator>
+                </div>
+                <div class="emailform-field-container">
+                    <div class="emailform-field-label required">
+                        Message:</div>
+                    <asp:TextBox runat="server" ID="MessageInReq" TextMode="MultiLine" Rows="3" Columns="41"
+                        name="MessageInReq" type="text" CssClass="emailform-field multiline"></asp:TextBox>
+                    <asp:requiredfieldvalidator id="MessageInReqFieldValidator"
+                        controltovalidate="MessageInReq"
+                        validationgroup="EmailFormGroup"
+                        errormessage="Enter Message"
+                        runat="Server">
+                    </asp:requiredfieldvalidator>
+                </div>
+            </div>
+            <asp:Panel runat="server" ID="ReqPanelInReq" Visible="false" CssClass="reqpanel">
+                <p style="text-align: center; color: #ff0000;">
+                    *Please fill out all required fields.</p>
+            </asp:Panel>
+            <div class="emailform-footer container">
+                <div class="emailform-buttons">
+                    <asp:Button runat="server" ID="EmailCancel" CssClass="emailform-button cancel-button" Text="Cancel" OnClick="Cancel_RequestEmailClick"/>
+                    <asp:Button runat="server" ID="ReqEmailOK" Text="Submit" OnClick="OK_RequestEmailClick" CssClass="emailform-button submit-button"/>
+                </div>
+            </div>
+        </div>
+
+        <asp:Panel runat="server" ID="EmailRequestComplete" CssClass="modal-win-center">
+            <div class="modal-win-bg">
+            </div>
+            <asp:Button ID="Button2" runat="server" class="modal-win-close" />
+            <div class="modal-win">
+                <div class="modal-win-body">
+                    <span class="modal-win-header">Success!</span>
+                    <hr class="modal-win-line" />
+                    <span class="modal-win-text">Your email request has been succesfully delivered.</span>
+                    <asp:Button runat="server" ID="CloseEmail" CssClass="modal-button" Text="Continue"  />
+                </div>
+            </div>
+        </asp:Panel>
+    </asp:Panel>
+</div>
+        </asp:panel>
+
+         <div id="MsgPopup" class="modal-win-center modal-win-wide">
+            <asp:HiddenField ID="OutOfMarketZipCode" runat="server" />
+            <div class="modal-win-bg">
+            </div>
+            <div class="modal-win-close" ></div>
+            <div class="modal-win">
+                <div class="modal-win-body">
+                    <h3 class="modal-win-text">We're Sorry...</h3>
+                    <h4 class="modal-win-text">We do not currently have any Best Pick companies to recommend in your area. To browse the blog from zip code <span class="out-of-market-zip"><%= OutOfMarketZipCode.Value %></span>, click Continue Anyway.</h4>
+                    <div class="modal-win-text">
+					    <p><i>To learn more about us and the areas we service, please <a href="<%=basedomain%>/content/about-us">click here</a>, or feel free to <a href="<%=basedomain%>/content/contact-us">contact us</a>. Our customer service Help Desk would be happy to answer any questions that you might have.</i></p>
+                        <div class="control-group-center">
+                            <asp:Button OnClick="GoOutOfMarket" CssClass="button button-dark button-auto-width" runat="server" Text="Continue Anyway"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </form>
+</body>
+</html>

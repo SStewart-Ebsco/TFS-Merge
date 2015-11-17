@@ -1,0 +1,151 @@
+.modal-win-center
+{
+	position: fixed;
+	left: 50%;
+	top: 10%;
+	z-index: 20;
+	display: none;
+	height: 80%;
+}
+@media screen and (max-height: 300px) 
+{
+    .modal-win-center
+    {
+	    top: 10px;
+    }
+}
+.modal-win-bg
+{
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-color: rgba(0,0,0,0.5);
+	z-index: 19;
+        height: 150%;
+}
+.modal-win
+{
+	border: 2px solid #dddcdc;
+	background-color: #f3f3f3;
+	background-image: linear-gradient(to top, #cfcfcf, #fff);
+	box-shadow: 0 0 35px #000;
+	border-radius: 5px;
+	margin: 0 auto;
+	/*display: table;*/
+	position: relative;
+	left: -50%;
+	/*top: -50%;*/
+	z-index: 20;
+	min-width: 215px;
+    padding-bottom: 5px;
+	max-height: 100%;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+.modal-win-body
+{
+}
+.modal-win-close
+{
+	width: 	24px;
+	height: 24px;
+	border: none;
+	border-radius: 12px;
+	background-size: 100%;
+	background-image: url('/blogfiles/mobile/images/modal-close.png');
+	box-shadow: 0 0 15px #000;
+	left: 50%;
+	position: relative;
+	top: 12px;
+	margin-left: -12px;
+	z-index: 21;
+}
+.modal-win-header
+{
+	width: 250px;
+	font-weight: bold;
+	font-size: medium;
+	display: block;
+	margin: 0 auto;
+	padding: 10px 20px;
+	text-align: center;
+}
+.modal-win-line
+{
+	margin: 5px 0 5px 0;
+	border: none;
+	height: 1px;
+	background-image: url('/blogfiles/mobile/images/modal-line.png');
+	background-repeat: repeat-x;
+}
+.modal-win-list
+{
+	text-indent: -1em;
+	padding: 10px 30px 3px 30px;
+	list-style: none;
+}
+.modal-win-list>li
+{
+	margin-bottom: 7px;
+}
+.modal-win-list-text
+{
+	display: inline-block;
+	margin-left: 0px;
+	padding-left: 23px;
+	vertical-align: middle;
+	text-indent: 0em;
+	z-index: 0;
+	position: relative;
+}
+.modal-win-checkbox
+{
+	z-index: 1;
+	position: relative;
+	margin: 2px 0px 0px -10px;
+	left: 18px;
+	vertical-align: middle;
+}
+.modal-win-checkbox[disabled]
+{
+	visibility: hidden;
+}
+.modal-win-checkbox[disabled]+.modal-win-list-text, .modal-win-checkbox[disabled]+.modal-win-list-text input[type=checkbox]
+{
+	background-image: url('/blogfiles/mobile/images/checkbox-disabled.png');
+	background-repeat: no-repeat;
+	background-position: 0px 50%;
+	color: #909090;
+}
+.modal-win-checkbox[disabled]+.modal-win-list-text:after
+{
+	content: "*";
+	color: #000;
+}
+.modal-win-note
+{
+	margin-top: 15px;
+	display: block;
+	text-align: center;
+	margin: 15px 5px 5px 5px;
+	font-style: italic;
+	/*width: 280px;*/
+}
+.modal-win-rednote
+{
+    color:#FF0000;
+    font-style:normal; 
+}
+.modal-win-text
+{
+	margin-top: 15px;
+	display: block;
+	text-align: center;
+	margin: 15px 5px 5px 5px;
+}
+
+
+
+

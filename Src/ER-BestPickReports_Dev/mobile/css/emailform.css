@@ -1,0 +1,163 @@
+.emailform
+{
+    background-color: #f3f8fe;
+    width: 100%;
+    min-width: 320px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    overflow-y: auto;
+    display: none;
+}
+.emailform-header
+{
+    text-align: center;
+    display: block;
+    margin: 10px auto 0 auto;
+}
+.emailform-header-company
+{
+    text-align: center;
+    display: block;
+    font-size: large;
+    font-weight: bold;
+    border: none;
+	margin: 0 auto;
+	background: transparent;
+	width: 100%;
+	outline: none;
+}
+.emailform-line
+{
+    border-color: #dadfe4;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.emailform-intro
+{
+    display: block;
+    margin: 24px 0 0 0;
+}
+.emailform-field-container
+{
+    padding-right: 10px;
+    margin-top: 15px;
+    box-sizing: border-box;
+    float: left;
+    width: 100%;
+    overflow: hidden;
+}
+.emailform-field-container.forty
+{
+    width: 40%;
+}
+.emailform-field-container.fifty
+{
+    width: 50%;
+}
+.emailform-field-container.sixty
+{
+    width: 60%;
+}
+.emailform-field-label
+{
+
+}
+.emailform-field-label.required
+{
+    color: #e60a1b;
+}
+.emailform-field-label.required::after
+{
+    content: "*";
+}
+.emailform-field
+{
+    border-radius: 5px;
+    border: 1px solid #cccccc;
+    width: 100%;
+}
+input[type="checkbox"].emailform-field
+{
+    width: 20px;
+}
+.emailform-field.multiline
+{
+    height: 90px;
+}
+.emailform-content
+{
+    position: absolute;
+    height: auto;
+    overflow: auto;
+    top: 0px;
+    bottom: 78px;
+    padding-bottom: 13px;
+}
+.emailform-footer
+{
+    clear: both;
+    margin-top: 15px;
+    height: 78px;
+    background-color: #002f87;
+    overflow: inherit;
+    position: fixed;
+    bottom: 0;
+    z-index: 11;
+}
+.emailform-buttons
+{
+    width: 295px;
+    margin: 18px auto 17px auto;
+    height: 43px;
+}
+.emailform-button
+{
+    width: 143px;
+    height: 37px;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 0 -1px 1px #000;
+    font-size: large;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+.emailform-validator
+{
+    display: block;
+    float: left;
+    width: 99%;
+    overflow: auto;
+    color: blue;
+}
+.emailform-validator[style*="hidden"]
+{
+    width: 0.1px;
+    height: 1.3em;
+}
+.cancel-button
+{
+    float: left;
+    background-color: #e1303a;
+    box-shadow: 0 2px 0 -1px #c4202a, 0 5px 0 -1px #ae121c, 0 -3px 0 -1px #ff7981;
+}
+.submit-button
+{
+    float: right;
+    background-color: #00a941;
+    box-shadow: 0 2px 0 -1px #008934, 0 5px 0 -1px #00772d, 0 -3px 0 -1px #00dd54;
+}
+input.error, textarea.error {
+    border: 1px solid #DD3619;
+}
+label.error {
+    text-align: center;
+    color: #DD3619;
+    text-shadow: 1px 1px #FFF;
+}

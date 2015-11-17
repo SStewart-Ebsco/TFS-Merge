@@ -1,0 +1,29 @@
+﻿#Testimonials
+{
+    margin: 20px 0 20px 0;
+    padding: 0;
+}
+.testimonial:last-of-type > .testimonial-quote
+{
+    background: none;
+}
+.testimonial-quote
+{
+    margin: 10px 0 0 0;
+    padding: 0 0 10px 0;
+    font-style: italic;
+    text-align: justify;
+    background: url('/images/bg_div_h.png') repeat-x 0 100%;
+    position: relative;
+    font-size: 13pt;
+}
+.testimonial-quote>p
+{
+    display: inline;
+}
+.testimonial-quote:before {
+    content: '“';
+}
+.testimonial-quote:after {
+    content: '”';
+}

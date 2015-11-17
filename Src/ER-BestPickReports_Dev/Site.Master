@@ -1,0 +1,470 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="ER_BestPickReports_Dev.SiteMaster" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
+<!DOCTYPE html>
+<!--[if IE 7]> <html class="ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]> <html class="ie8 oldie" lang="en"> <![endif]-->
+<!--[if IE 9]> <html class="ie9" lang="en"> <![endif]-->
+<!--[if gt IE 9]><!--> <html lang="en"> <!--<![endif]-->
+
+<head runat="server">
+    <meta charset="utf-8">
+    <meta name="apple-itunes-app" content="app-id=494057962">
+    <meta name="p:domain_verify" content="6e22db9776064c8666e4d37e61f00608"/>
+	<title></title>
+	
+    <asp:ContentPlaceHolder ID="HeadPlaceHolder" runat="server">
+        <%= System.Web.Optimization.Styles.Render("~/bundles/site-desktop/styles")%>
+    </asp:ContentPlaceHolder>
+	<!-- this script should be placed in the header section to override default fonts in a quicker way -->
+    <script>
+        (function (d) {
+            var config = {
+                kitId: 'fgn0ait',
+                scriptTimeout: 3000
+            },
+        h = d.documentElement, t = setTimeout(function () { h.className = h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive"; }, config.scriptTimeout), tk = d.createElement("script"), f = false, s = d.getElementsByTagName("script")[0], a; h.className += " wf-loading"; tk.src = '//use.typekit.net/' + config.kitId + '.js'; tk.async = true; tk.onload = tk.onreadystatechange = function () { a = this.readyState; if (f || a && a != "complete" && a != "loaded") return; f = true; clearTimeout(t); try { Typekit.load(config) } catch (e) { } }; s.parentNode.insertBefore(tk, s)
+        })(document);
+    </script> 
+
+    <a href="https://plus.google.com/+BestPickReports" rel="publisher" ></a>
+</head>
+<body runat="server" id="bodytag">
+<!-- Google Tag Manager -->
+<noscript>
+    <iframe src="//www.googletagmanager.com/ns.html?id=GTM-NFGQ6Z" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<script>
+(function (w, d, s, l, i) {w[l] = w[l] || []; w[l].push({ 'gtm.start':new Date().getTime(), event: 'gtm.js'});
+var f = d.getElementsByTagName(s)[0],j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src = '//www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);})(window, document, 'script', 'dataLayer', 'GTM-NFGQ6Z');
+</script>
+<!-- End Google Tag Manager -->
+
+    <form runat="server">
+    <cc1:ToolkitScriptManager runat="server" ID="ScriptManager1"></cc1:ToolkitScriptManager>
+    <asp:HiddenField runat="server" ID="HiddenSearchValue" />
+    <asp:HiddenField runat="server" ID="hdnAreaSkylineImageFileName" EnableViewState="False"/>
+    <div id="wrapper">
+	    <div id="container">
+
+            <header id="header">
+		        <div class="container">
+			        <asp:HyperLink runat="server" ID="LogoLink" class="logo"><asp:Image runat="server" ID="Logo" ImageUrl="/images/logo.png" AlternateText="Best Pick Reports" ToolTip="Best Pick Reports" ></asp:Image></asp:HyperLink>
+			        <div class="social">
+
+                    <%--<!-- AddThis Button BEGIN -->
+                    <div class="addthis_toolbox addthis_default_style ">
+                        <a class="addthis_button_facebook_like" <%="fb:like:layout"%>="button_count" <%="ffb:like:href"%>="http://www.facebook.com/BestPickReports"></a>
+                        <a class="addthis_button_tweet" <%="ftw:count"%>="none"></a>
+                        <a class="addthis_button_google_plusone" <%="fg:plusone:count"%>="false" <%="fg:plusone:size"%>="medium" <%="fg:plusone:href"%>="https://plus.google.com/115147162962806414209/"></a> 
+                        <a class="addthis_counter addthis_pill_style"></a>
+                    </div>
+                    <script type="text/javascript">    var addthis_config = { "data_track_addressbar": false };</script>
+                    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5127eb9e4963bdca" async="async"></script>
+                    <!-- AddThis Button END -->--%>
+
+                    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                    <div class="addthis_sharing_toolbox"></div>
+
+                    </div>
+			        <div class="search-form">
+				        
+				        <asp:TextBox runat="server" ID="SearchValue"></asp:TextBox>
+						<span class="tagline">A-rated companies recommended by your neighbors<sup>TM</sup></span>
+						<cc1:TextBoxWatermarkExtender runat="server" ID="SearchWM" TargetControlID="SearchValue" WatermarkText="Search"></cc1:TextBoxWatermarkExtender>
+
+				        <asp:Button runat="server" ID="SearchButton" OnClick="SearchButton_Click" />
+			        </div>
+		        </div>
+	        </header>
+	        <!-- / header -->
+
+            <nav id="menu">
+                <asp:Panel runat="server" ID="GlobalNavPanel" CssClass="container" Visible="false">
+                    <div class="zip">
+				        <h3>Choose a Service Area To Get Started</h3>
+				        <label>Enter Your Zipcode</label>
+				        <div class="fields">
+					        <asp:TextBox runat="server" ID="ZipCode" Text=""></asp:TextBox>
+					        <asp:Button runat="server" ID="ZipSearchButton" OnClick="ZipSearch_Click" Text="Search" />
+				        </div>
+			        </div>
+			        <ul class="nav">
+				        <li class="areas"><a href="#areas">View All<br>Areas <span></span></a></li>
+				        <li><a href="#about">About Us <span></span></a></li>
+				        <li><a href="#more">More <span></span></a></li>
+			        </ul>
+                </asp:Panel>
+                <asp:Panel runat="server" ID="PageNavPanel" CssClass="container" Visible="false">
+                    <div class="category"><a class="submenu-opener" href="#categories">Choose a Service Category</a></div>
+			        <div class="location">
+				        <div class="top"><div class="loctext">Your Location</div><div class="div"></div> <a href="#zip" class="submenu-opener change">Change <span></span></a></div>
+				        <div class="selected"><asp:Literal runat="server" ID="CurrentLocation"></asp:Literal></div>
+			        </div>
+			        <ul class="nav second">
+				        <li><a href="<%=basedomain %>/blog">Blog</a></li>
+				        <li><a href="#about">About Us <span></span></a></li>
+				        <li><a href="#more">More <span></span></a></li>
+			        </ul>
+                </asp:Panel>
+	        </nav>
+	        <!-- / navigation -->
+	
+	        <div id="areas" class="sub-menu">
+		        <div class="container">
+			        <ul class="menu">
+				        <li><a href="#">Alabama</a>
+					        <ul>
+						        <li><a href="<%=basedomain %>/birmingham/birmingham">Birmingham</a></li>
+					        </ul>
+				        </li>
+				        <li><a href="#">Georgia</a>
+					        <ul>
+						        <li><a href="<%=basedomain %>/atlanta/north-atlanta">North Atlanta</a></li>
+                                <li><a href="<%=basedomain %>/atlanta/cherokee">Cherokee</a></li>
+                                <li><a href="<%=basedomain %>/atlanta/dunwoody-sandy-springs">Dunwoody/Sandy Springs</a></li>
+                                <li><a href="<%=basedomain %>/atlanta/gwinnett-east-metro">Gwinnett/East Metro</a></li>
+                                <li><a href="<%=basedomain %>/atlanta/roswell-alpharetta">Roswell/Alpharetta</a></li>
+                                <li><a href="<%=basedomain %>/atlanta/cobb-marietta">Cobb/Marietta</a></li>
+						        <li><a href="<%=basedomain %>/atlanta/clayton-and-henry-county">Clayton & Henry County</a></li>
+						        <li><a href="<%=basedomain %>/atlanta/coweta-fayette-and-south-fulton-county">Coweta, Fayette & South Fulton County</a></li>
+					        </ul>
+				        </li>
+                        <li><a href="#">Illinois</a>
+					        <ul>
+						        <li><a href="<%=basedomain %>/chicago/northern-chicago">Northern Chicago</a></li>
+                                <li><a href="<%=basedomain %>/chicago/north-shore">North Shore</a></li>
+                                <li><a href="<%=basedomain %>/chicago/northwest-chicago-suburbs">Northwest Chicago Suburbs</a></li>
+                                <li><a href="<%=basedomain %>/chicago/southwest-chicago-suburbs">Southwest Chicago Suburbs</a></li>
+                                <li><a href="<%=basedomain %>/chicago/western-chicago-suburbs">Western Chicago Suburbs</a></li>
+					        </ul>
+				        </li>
+                        <li><a href="#">Maryland</a>
+					        <ul>
+						        <li><a href="<%=basedomain %>/maryland/montgomery">Montgomery County</a></li>
+                                <li><a href="<%=basedomain %>/maryland/howard">Howard County</a></li>
+                                <li><a href="<%=basedomain %>/maryland/anne-arundel">Anne Arundel County</a></li>
+                                <li><a href="<%=basedomain %>/maryland/prince-georges">Prince George's County</a></li>
+					        </ul>
+				        </li>
+                        <li><a href="#">Massachusetts</a>
+					        <ul>
+						        <li><a href="<%=basedomain %>/boston/greater-boston">Greater Boston</a></li>
+                                <li><a href="<%=basedomain %>/boston/boston-metrowest">Boston MetroWest</a></li>
+                                <li><a href="<%=basedomain %>/boston/boston-north-shore">Boston North Shore</a></li>
+                                <li><a href="<%=basedomain %>/boston/boston-south-shore">Boston South Shore</a></li>
+					        </ul>
+				        </li>
+                        <li><a href="#">Pennsylvania</a>
+					        <ul>
+						        <li><a href="<%=basedomain %>/philadelphia/montgomery-county-philadelphia">Montgomery County Philadelphia</a></li>
+                                <li><a href="<%=basedomain %>/philadelphia/chester-county-philadelphia">Chester County Philadelphia</a></li>
+                                <li><a href="<%=basedomain %>/philadelphia/philadelphia-main-line">Philadelphia Main Line</a></li>
+                                <li><a href="<%=basedomain %>/philadelphia/bucks-county-philadelphia">Bucks County Philadelphia</a></li>
+                                <li><a href="<%=basedomain %>/philadelphia/western-delaware-county-philadelphia">Western Delaware County Philadelphia</a></li>
+					        </ul>
+				        </li>
+                        <li><a href="#">Virginia</a>
+					        <ul>
+						        <li><a href="<%=basedomain %>/northern-virginia/prince-william">Prince William County</a></li>
+                                <li><a href="<%=basedomain %>/northern-virginia/fairfax-county">Fairfax County</a></li>
+                                <li><a href="<%=basedomain %>/northern-virginia/loudoun-county">Loudoun County</a></li>
+                                <li><a href="<%=basedomain %>/northern-virginia/arlington-county">Arlington County</a></li>
+					        </ul>
+				        </li>
+				        <li><a href="#">Texas</a>
+					        <ul>
+						        <li><a href="<%=basedomain %>/dallas">Dallas</a>
+							        <ul>
+								        <li><a href="<%=basedomain %>/dallas/plano-frisco-allen-mcKinney">Plano/Frisco/Allen/McKinney</a></li>
+                                        <li><a href="<%=basedomain %>/dallas/greater-dallas">Greater Dallas</a></li>
+                                        <li><a href="<%=basedomain %>/dallas/north-dallas">North Dallas</a></li>
+                                        <li><a href="<%=basedomain %>/dallas/southlake-grapevine-colleyville">Southlake/Grapevine/Colleyville</a></li>
+                                        <li><a href="<%=basedomain %>/dallas/flower-mound-lewisville-highland-village">Flower Mound/Lewisville/Highland Village</a></li>
+							        </ul>
+						        </li>
+						        <li><a href="<%=basedomain %>/houston">Houston</a>
+							        <ul>
+								        <li><a href="<%=basedomain %>/houston/west-houston-suburbs">West Houston Suburbs</a>
+                                        <li><a href="<%=basedomain %>/houston/north-houston-suburbs">North Houston Suburbs</a>
+                                        <li><a href="<%=basedomain %>/houston/fort-bend-county">Fort Bend County</a>
+                                        <li><a href="<%=basedomain %>/houston/the-heights-midtown">The Heights/Midtown</a>
+							        </ul>
+						        </li>
+					        </ul>
+				        </li>
+                        <li><a href="<%=basedomain %>/washington-dc/washington-dc">Washington, DC</a></li>
+			        </ul>
+                    <div class="span-div"></div>
+		        </div>
+	        </div>
+
+            <div id="categories" class="sub-menu">
+                <div class="container">
+		    
+                    <asp:ListView runat="server" ID="ListView1" OnItemDataBound="ListView1_ItemDataBound">
+                        <LayoutTemplate>
+                            <ul>
+                                <li runat="server" id="itemPlaceholder" />
+                            </ul>
+                        </LayoutTemplate>
+                        <ItemTemplate>
+                            <li><asp:HyperLink runat="server" ID="CatLink"></asp:HyperLink></li>
+                        </ItemTemplate>
+                    </asp:ListView>
+
+                    <asp:ListView runat="server" ID="ListView2" OnItemDataBound="ListView2_ItemDataBound">
+                        <LayoutTemplate>
+                            <ul>
+                                <li runat="server" id="itemPlaceholder" />
+                            </ul>
+                        </LayoutTemplate>
+                        <ItemTemplate>
+                            <li><asp:HyperLink runat="server" ID="CatLink"></asp:HyperLink></li>
+                        </ItemTemplate>
+                    </asp:ListView>
+
+                    <asp:ListView runat="server" ID="ListView3" OnItemDataBound="ListView3_ItemDataBound">
+                        <LayoutTemplate>
+                            <ul>
+                                <li runat="server" id="itemPlaceholder" />
+                            </ul>
+                        </LayoutTemplate>
+                        <ItemTemplate>
+                            <li><asp:HyperLink runat="server" ID="CatLink"></asp:HyperLink></li>
+                        </ItemTemplate>
+                    </asp:ListView>
+
+                    <asp:ListView runat="server" ID="ListView4" OnItemDataBound="ListView4_ItemDataBound">
+                        <LayoutTemplate>
+                            <ul class="last">
+                                <li runat="server" id="itemPlaceholder" />
+                            </ul>
+                        </LayoutTemplate>
+                        <ItemTemplate>
+                            <li><asp:HyperLink runat="server" ID="CatLink"></asp:HyperLink></li>
+                        </ItemTemplate>
+                    </asp:ListView>
+
+		        </div>
+	        </div>
+
+            <div id="zip" class="sub-menu">
+		        <div class="container">
+			        <label>Please Enter Your Zipcode:</label>
+			        <div class="fields">
+				        <asp:TextBox runat="server" ID="ZipCodeChange" Text=""></asp:TextBox>
+					    <asp:Button runat="server" ID="ZipCodeChangeButton" OnClick="ZipCodeChangeButton_Click" Text="Search" />
+			        </div>
+			        <div class="or">-or-</div>
+			        <a href="#areas" class="submenu-inner link">View All Areas <span></span></a>
+		        </div>
+	        </div>
+
+	        <div id="about" class="sub-menu">
+		        <div class="container">
+			        <ul>
+				        <li><a href="<%=basedomain%>/content/about-us"><img src="/images/pic_s_1.png" alt="Our Story" /><span>Our Story</span></a></li>
+				        <li><a href="<%=basedomain%>/content/methodology"><img src="/images/pic_s_2.png" alt="Research Methodology" /><span>Research Methodology</span></a></li>
+				        <li><a href="<%=basedomain%>/testimonials"><img src="/images/pic_s_3.png" alt="Homeowner Testimonials" /><span>Homeowner Testimonials</span></a></li>
+				        <li><a href="<%=basedomain%>/content/frequently-asked-questions"><img src="/images/pic_s_4.png" alt="FAQs" /><span>FAQs</span></a></li>
+			        </ul>
+		        </div>
+	        </div>
+
+	        <div id="more" class="sub-menu">
+		        <div class="container">
+			        <ul>
+				        <li><a href="<%=basedomain%>/blog"><img src="/images/pic_a_1.png" alt="EBSCO Research Blog" /><span>Blog</span></a></li>
+				        <li><a href="<%=basedomain%>/content/apps"><img src="/images/pic_a_2.png" alt="Apps" /><span>Apps</span></a></li>
+				        <li><a href="<%=basedomain%>/content/learning-center"><img src="/images/pic_a_3.png" alt="Learning Center" /><span>Learning Center</span></a></li>
+				        <li runat="server" id="requestitem"><a href="<%=basedomain%>/requestaguide"><asp:Image runat="server" ID="GuideImage" AlternateText="Request a Guide" ImageUrl="/images/pic_a_4.png" /><span>Request a Guide</span></a></li>
+				        <li><a href="<%=basedomain%>/newsletter-sign-up"><img src="/images/pic_a_5.png" alt="Newsletter Sign Up" /><span>Newsletter Sign Up</span></a></li>
+				        <li><a href="<%=basedomain%>/content/contact-us"><img src="/images/pic_a_6.png" alt="Contact Us" /><span>Contact Us</span></a></li>
+			        </ul>
+		        </div>
+	        </div>
+			
+			<asp:Panel ID="categoryPointer" runat="server" Visible="False">
+				<div class="container">
+					<div class="containerInner">
+						<img src="/images/arrow.png"/>
+						<span>Click Here to View All Categories</span>
+					</div>
+				</div>
+			</asp:Panel>
+			
+			<asp:Panel runat="server" ID="pnlTopCategories" Visible="false">
+				<div id="topCategories">
+					<asp:Repeater runat="server" ID="rptrTopCategories" OnItemDataBound="rptrTopCategories_ItemDataBound" EnableViewState="False">
+					<HeaderTemplate>
+						<div class="topCategoriesHeader">
+							<div class="container inlineItem">
+								<span class="star">
+									<img src="/images/star.png" />
+								</span>
+								<span>Top Categories</span>
+								<span class="arrow"></span>
+							</div>
+						</div>
+						<ul class="topCategoriesList">
+							
+					</HeaderTemplate>
+					<ItemTemplate>
+						<li class="topCategory inlineItem">
+							<asp:HyperLink runat="server" ID="topCategoryLink"></asp:HyperLink>
+						</li>
+					</ItemTemplate>
+					<FooterTemplate></ul></FooterTemplate>
+				</asp:Repeater>
+				</div>
+			</asp:Panel>
+	
+            <asp:Panel runat="server" ID="SliderPanel" CssClass="slider" Visible="false">
+	        <div id="slider">
+                <asp:Repeater runat="server" ID="SlideList" OnItemDataBound="SlideList_ItemDataBound" EnableViewState="False">
+	                <HeaderTemplate>
+                        <ul class="slides">
+	                         <li class="item">
+		                         <img src="<%=basedomain%>/assets/slides/<%=CoverImagePath%>" alt="Cover" width="980" height="350" />
+							</li>
+                    </HeaderTemplate>
+                    <ItemTemplate>
+                        <li class="item">
+	                        <img src="<%=basedomain%>/assets/slides/<%# Eval("ImagePath") %>" alt="<%# Eval("Title") %>" width="980" height="350" />
+				            <h3><strong><%# Eval("Title") %></strong><asp:Literal runat="server" ID="Location"></asp:Literal></h3>
+			            </li>
+                    </ItemTemplate>
+					<FooterTemplate>
+						</ul>
+					</FooterTemplate>
+	            </asp:Repeater>
+		        <a href="#" class="reload"></a>
+				<div class="videoNavigation">
+					<asp:HyperLink runat="server" ID="PromoClipLink" CssClass="videoButton fancybox.iframe">
+						<div class="circle">
+							<div class="play"></div>
+						</div>
+						<div class="description">
+							<p> Watch the Best Pick<sup>TM</sup> Difference video</p>
+						</div>
+					</asp:HyperLink>
+				</div>
+	        </div>
+            </asp:Panel>
+
+	        <div id="content">
+                    <asp:ContentPlaceHolder ID="MainContent" runat="server"/>
+	        </div>
+	        <!-- / content -->
+
+        </div><!-- /container -->
+    </div><!-- /wrapper -->
+
+	<footer id="footer">
+		<div class="container">
+			<div class="item">
+				<h3>Overview</h3>
+				<ul>
+					<li><a href="<%=basedomain%>/content/about-us" rel="nofollow">Our Story</a></li>
+					<li><a href="<%=basedomain%>/testimonials" rel="nofollow">Homeowner Testimonials</a></li>
+					<li><a href="<%=basedomain%>/content/methodology" rel="nofollow">Research Methodology</a></li>
+					<li><a href="<%=basedomain%>/content/frequently-asked-questions#What%20is%20a%20Best%20Pick?" rel="nofollow">What is a Best Pick?</a></li>
+					<li><a href="<%=basedomain%>/content/apps" rel="nofollow">Mobile App Overview</a></li>
+					<li><a href="<%=basedomain%>/content/frequently-asked-questions" rel="nofollow">FAQs</a></li>
+					<li><a href="<%=basedomain%>/blog" rel="nofollow">Blog</a></li>
+				</ul>
+			</div>
+			<div class="item">
+				<h3>Resources</h3>
+				<ul>
+					<li runat="server" id="footerrequestitem"><a href="<%=basedomain%>/requestaguide" rel="nofollow">Request a Guide</a></li>
+					<li><a href="<%=basedomain%>/newsletter-sign-up" rel="nofollow">E-Newsletter</a></li>
+					<li><a href="<%=basedomain%>/content/learning-center#tips" rel="nofollow">Consumer Tips</a></li>
+					<li><a href="<%=basedomain%>/content/learning-center#insurance" rel="nofollow">Insurance Information</a></li>
+					<li><a href="<%=basedomain%>/nominate-a-company" rel="nofollow">Nominate a Company</a></li>
+				</ul>
+			</div>
+			<div class="item">
+				<h3>Connect</h3>
+				<ul>
+					<li><a href="<%=basedomain%>/content/contact-us" rel="nofollow">Contact Us</a></li>
+					<li><a href="<%=basedomain%>/share-your-feedback" rel="nofollow">Share Feedback</a></li>
+					<li><a href="https://www.facebook.com/BestPickReports/app_190322544333196" target="_blank" rel="nofollow"><span class="ico-facebook"></span>Facebook</a></li>
+					<li><a href="https://twitter.com/bestpickreports" target="_blank" rel="nofollow"><span class="ico-twitter"></span>Twitter</a></li>
+					<li><a href="https://plus.google.com/115147162962806414209/posts" target="_blank" rel="nofollow"><span class="ico-google"></span>Google +</a></li>
+					<li><a href="http://itunes.apple.com/us/app/best-pick-reports/id494057962?mt=8" target="_blank" rel="nofollow"><span class="ico-ios"></span>Apple iOS App</a></li>
+					<li><a href="https://play.google.com/store/apps/details?id=com.brotherfish" target="_blank" rel="nofollow"><span class="ico-android"></span>Google Android App</a></li>
+				</ul>
+			</div>
+			<div class="item last">
+				<h3>Our Cities</h3>
+				<ul>
+					<li><a runat="server" id="atlantalink">Atlanta</a></li>
+                    <li><a runat="server" id="bhamlink">Birmingham</a></li>
+                    <li><a runat="server" id="masslink">Boston</a></li>
+					<li><a runat="server" id="chicagolink">Chicago</a></li>
+					<li><a runat="server" id="dallaslink">Dallas</a></li>
+                    <li><a runat="server" id="houstonlink">Houston</a></li>
+                    <li><a runat="server" id="marylandlink">Maryland</a></li>
+					<li><a runat="server" id="nvlink">Northern Virginia</a></li>
+                    <li><a runat="server" id="pennlink">Philadelphia</a></li>
+					<li><a runat="server" id="dclink">Washington, DC</a></li>
+					
+				</ul>
+			</div>
+			<p>©1997-<script type="text/javascript">document.write(new Date().getFullYear());</script> EBSCO Research LLC. All Rights Reserved.<br /><a href="<%=basedomain%>/content/privacy-policy" rel="nofollow">Privacy Policy</a> - <a href="<%=basedomain%>/content/disclaimer" rel="nofollow">Disclaimer</a></p>
+		</div>
+		<!-- / container -->
+	</footer>
+	<!-- / footer -->
+	
+	<div class="overlay hidden-popup"></div>
+	<div id="popup" class="hidden-popup">
+		<a href="#" class="btn-close"></a>
+		<h3>Please enter your <strong>Zip Code</strong> to receive the most relevant results:</h3>
+		<fieldset>
+			<asp:TextBox runat="server" ID="SearchZipBox"></asp:TextBox>
+			<asp:Button runat="server" ID="SearchZipButton" OnClick="SearchZipButton_Click" Text="GO" />
+		</fieldset>
+	</div>
+
+    <div class="overlay hidden-popup2"></div>
+    <div id="popup-sorry" class="hidden-popup2">
+		<a href="#" class="btn-close"></a>
+		<h3>We’re Sorry...</h3>
+		<h4>We do not currently have any Best Pick companies to recommend in your area.</h4>
+		<p>To learn more about us and the areas we service, please <a href="<%=basedomain%>/content/about-us">click here</a>, or feel free to <a href="<%=basedomain%>/content/contact-us">contact us</a>. Our customer service Help Desk would be happy to answer any questions that you might have.</p>
+	</div>
+
+</form>
+
+<%= System.Web.Optimization.Scripts.Render("~/Scripts/jquery") %>
+<script type="text/javascript" src="/js/jquery.ui.js"></script>
+<script type="text/javascript" src="/js/jquery.flexslider-min.js"></script>
+<script type="text/javascript" src="/js/jquery.carouFredSel-6.2.1-packed.js"></script>
+ <%= System.Web.Optimization.Scripts.Render("~/Scripts/site-desktop/main")%>
+<script type="text/javascript" src="/js/jquery.fancybox.pack.js"></script>
+
+<script type="text/javascript">
+    function clickEnterButton(e, btnID) {
+    	var evnt = e ? e : window.event;
+    	var btn = document.getElementById(btnID);
+    	if (btn) {
+    		if (evnt.keyCode == 13) {
+    			btn.click();
+    			return false;
+    		}
+    	}
+    }
+</script>
+
+
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5127eb9e4963bdca" async="async"></script>
+
+<!--[if lt IE 9]>
+		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+</body>
+</html>

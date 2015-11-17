@@ -1,0 +1,772 @@
+﻿<%@ Master AutoEventWireup="true" CodeBehind="Blog.master.cs" Inherits="ER_BestPickReports_Dev.blogfiles.Blog" Language="C#" %>
+<%@ Register assembly="SearchCloud" namespace="IntrepidStudios.SearchCloud" tagprefix="IS" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--[if IE 7]>    <html class="ie ie7" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="ie ie8" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"> <![endif]-->
+<!--[if IE 9]>    <html class="ie ie9" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"> <![endif]-->
+<!--[if IE 10]>    <html class="ie ie10" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"> <![endif]-->
+<!--[if gt IE 10]><!--><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"> <!--<![endif]-->
+<head runat="server">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="apple-itunes-app" content="app-id=494057962">
+    <link rel="SHORTCUT ICON" href="http://www.bestpickreports.com/favicon.ico"/>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+        <%= System.Web.Optimization.Styles.Render("~/bundles/blog-desktop/master")%>
+    </asp:ContentPlaceHolder>
+    <link rel="stylesheet" href="/blogfiles/assets/css/override-style.css" type="text/css" media="screen, projection" />
+
+	<!-- this script should be placed in the header section to override default fonts in a quicker way -->
+    <script>
+        (function (d) {
+            var config = {
+                kitId: 'fgn0ait',
+                scriptTimeout: 3000
+            },
+        h = d.documentElement, t = setTimeout(function () { h.className = h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive"; }, config.scriptTimeout), tk = d.createElement("script"), f = false, s = d.getElementsByTagName("script")[0], a; h.className += " wf-loading"; tk.src = '//use.typekit.net/' + config.kitId + '.js'; tk.async = true; tk.onload = tk.onreadystatechange = function () { a = this.readyState; if (f || a && a != "complete" && a != "loaded") return; f = true; clearTimeout(t); try { Typekit.load(config) } catch (e) { } }; s.parentNode.insertBefore(tk, s)
+        })(document);
+    </script> 
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+<body runat="server" id="bodytag">
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-NFGQ6Z"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>
+    (function (w, d, s, l, i) {
+        w[l] = w[l] || []; w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src = '//www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-NFGQ6Z');
+</script>
+<!-- End Google Tag Manager -->
+
+    <form id="form1" runat="server">
+    <cc1:ToolkitScriptManager runat="server" ID="ScriptManager1">
+        <Services>
+            <asp:ServiceReference Path="~/BlogService.svc" InlineScript="False" />
+        </Services>
+    </cc1:ToolkitScriptManager>
+    <asp:HiddenField runat="server" ID="HiddenSearchValue" />
+    <fieldset>
+		<ol class="accessibility">
+			<li><a href="#header">Skip to header</a></li>
+			<li><a href="#nav">Skip to navigation</a></li>
+			<li><a href="#container">Skip to content</a></li>
+			<li><a href="#footer">Skip to footer</a></li>
+		</ol><!-- accessibility -->
+		<div class="wrapper">
+		    <div id="container">
+		        <div id="header">
+		            <div class="container">
+			            <asp:HyperLink runat="server" ID="LogoLinkGlobal" class="logoGlobal" rel="nofollow" ><asp:Image runat="server" ID="LogoGlobal" ImageUrl="images/header/logoGlobal.png" AlternateText="Best Pick Reports" ToolTip="Best Pick Reports" ></asp:Image></asp:HyperLink>
+			            <asp:HyperLink runat="server" ID="LogoLinkBlog" class="logoBlog" rel="nofollow" ><label>Home Improvement</label><br/><label class="blogLogo">blog</label></asp:HyperLink>
+
+			            <div class="search-form">
+				            <asp:TextBox runat="server" ID="SearchBox" Text="Search" ></asp:TextBox>
+                            <asp:ImageButton runat="server" ID="SearchBtn" ImageUrl="images/header/btn_search.png" OnClick="SearchButton_Click" />
+			            </div>
+                        <asp:RadioButtonList ID="SearchOptions" runat="server" CssClass="search-options" RepeatDirection="Horizontal">
+                            <asp:ListItem  Selected="true" Text="Blog"></asp:ListItem>
+                            <asp:ListItem Text="BestPickReports.com"></asp:ListItem>
+                        </asp:RadioButtonList>
+                    </div>
+		        </div><!-- header -->
+                
+                <nav id="menu">
+                    <asp:Panel runat="server" ID="GlobalNavPanel" CssClass="container" Visible="false">
+                    <div class="zip">
+				        <h3>Choose a Service Area To Get Started</h3>
+				        <label>Enter Your Zipcode</label>
+				        <div class="fields">
+					        <asp:TextBox runat="server" ID="ZipCode" Text=""></asp:TextBox>
+					        <asp:Button runat="server" ID="ZipSearchButton" OnClick="ZipSearch_Click" Text="Search" />
+				        </div>
+			        </div>
+			        <ul class="nav">
+				        <li class="areas"><a href="#areas">View All<br>Areas <span></span></a></li>
+			        </ul>
+                </asp:Panel>
+                    <asp:Panel runat="server" ID="PageNavPanel" CssClass="container" Visible="false">
+                    <asp:Panel class="category" runat="server" ID="CategoriesWrapper"><asp:HyperLink CssClass="submenu-opener" href="#categories" runat="server" ID="SelectCatLbl">Filter Articles By Category</asp:HyperLink></asp:Panel>
+			        <div class="location">
+				        <div class="top"><div class="loctext">Your Location</div><div class="div"></div> <a href="#zip" class="submenu-opener change">Change <span></span></a></div>
+				        <div class="selected"><asp:Literal runat="server" ID="CurrentLocation"></asp:Literal></div>
+			        </div>
+                <div class="social">
+                    <%--<asp:Label runat="server">Connect<br />With Us</asp:Label>--%>
+                    <asp:ImageButton runat="server" ImageUrl="images/social/facebook_icon.png" OnClientClick="window.open('https://www.facebook.com/BestPickReports');return false;" ></asp:ImageButton>
+                    <asp:ImageButton runat="server" ImageUrl="images/social/twitter_icon.png" OnClientClick="window.open('https://twitter.com/bestpickreports');return false;" ></asp:ImageButton>
+                    <asp:ImageButton runat="server" ImageUrl="images/social/google_plus_icon.png" OnClientClick="window.open('https://plus.google.com/115147162962806414209/posts');return false;"></asp:ImageButton>
+                </div>
+                </asp:Panel>
+
+	            </nav><!-- / navigation -->
+	
+	            <div id="areas" class="sub-menu">
+		        <div class="container">
+			        <ul class="menu">
+				        <li><a href="#">Alabama</a>
+					        <ul>
+						        <li><a href="<%=basedomain %>/blog/birmingham/birmingham">Birmingham</a></li>
+					        </ul>
+				        </li>
+				        <li><a href="#">Georgia</a>
+					        <ul>
+						        <li><a href="<%=basedomain %>/blog/atlanta/north-atlanta">North Atlanta</a></li>
+                                <li><a href="<%=basedomain %>/blog/atlanta/cherokee">Cherokee</a></li>
+                                <li><a href="<%=basedomain %>/blog/atlanta/dunwoody-sandy-springs">Dunwoody/Sandy Springs</a></li>
+                                <li><a href="<%=basedomain %>/blog/atlanta/gwinnett-east-metro">Gwinnett/East Metro</a></li>
+                                <li><a href="<%=basedomain %>/blog/atlanta/roswell-alpharetta">Roswell/Alpharetta</a></li>
+                                <li><a href="<%=basedomain %>/blog/atlanta/cobb-marietta">Cobb/Marietta</a></li>
+						        <li><a href="<%=basedomain %>/blog/atlanta/clayton-and-henry-county">Clayton & Henry County</a></li>
+						        <li><a href="<%=basedomain %>/blog/atlanta/coweta-fayette-and-south-fulton-county">Coweta, Fayette & South Fulton County</a></li>
+					        </ul>
+				        </li>
+                        <li><a href="#">Illinois</a>
+					        <ul>
+						        <li><a href="<%=basedomain %>/blog/chicago/northern-chicago">Northern Chicago</a></li>
+                                <li><a href="<%=basedomain %>/blog/chicago/north-shore">North Shore</a></li>
+                                <li><a href="<%=basedomain %>/blog/chicago/northwest-chicago-suburbs">Northwest Chicago Suburbs</a></li>
+                                <li><a href="<%=basedomain %>/blog/chicago/southwest-chicago-suburbs">Southwest Chicago Suburbs</a></li>
+                                <li><a href="<%=basedomain %>/blog/chicago/western-chicago-suburbs">Western Chicago Suburbs</a></li>
+					        </ul>
+				        </li>
+                        <li><a href="#">Maryland</a>
+					        <ul>
+						        <li><a href="<%=basedomain %>/blog/maryland/montgomery">Montgomery County</a></li>
+                                <li><a href="<%=basedomain %>/blog/maryland/howard">Howard County</a></li>
+                                <li><a href="<%=basedomain %>/blog/maryland/anne-arundel">Anne Arundel County</a></li>
+                                <li><a href="<%=basedomain %>/blog/maryland/prince-georges">Prince George's County</a></li>
+					        </ul>
+				        </li>
+                        <li><a href="#">Massachusetts</a>
+					        <ul>
+						        <li><a href="<%=basedomain %>/blog/boston/greater-boston">Greater Boston</a></li>
+                                <li><a href="<%=basedomain %>/blog/boston/boston-metrowest">Boston MetroWest</a></li>
+                                <li><a href="<%=basedomain %>/blog/boston/boston-north-shore">Boston North Shore</a></li>
+                                <li><a href="<%=basedomain %>/blog/boston/boston-south-shore">Boston South Shore</a></li>
+					        </ul>
+				        </li>
+                        <li><a href="#">Pennsylvania</a>
+					        <ul>
+						        <li><a href="<%=basedomain %>/blog/philadelphia/montgomery-county-philadelphia">Montgomery County Philadelphia</a></li>
+                                <li><a href="<%=basedomain %>/blog/philadelphia/chester-county-philadelphia">Chester County Philadelphia</a></li>
+                                <li><a href="<%=basedomain %>/blog/philadelphia/philadelphia-main-line">Philadelphia Main Line</a></li>
+                                <li><a href="<%=basedomain %>/blog/philadelphia/bucks-county-philadelphia">Bucks County Philadelphia</a></li>
+                                <li><a href="<%=basedomain %>/blog/philadelphia/western-delaware-county-philadelphia">Western Delaware County Philadelphia</a></li>
+					        </ul>
+				        </li>
+                        <li><a href="#">Virginia</a>
+					        <ul>
+						        <li><a href="<%=basedomain %>/blog/northern-virginia/prince-william">Prince William County</a></li>
+                                <li><a href="<%=basedomain %>/blog/northern-virginia/fairfax-county">Fairfax County</a></li>
+                                <li><a href="<%=basedomain %>/blog/northern-virginia/loudoun-county">Loudoun County</a></li>
+                                <li><a href="<%=basedomain %>/blog/northern-virginia/arlington-county">Arlington County</a></li>
+					        </ul>
+				        </li>
+				        <li><a href="#">Texas</a>
+					        <ul>
+						        <li><a href="<%=basedomain %>/blog/dallas">Dallas</a>
+							        <ul>
+								        <li><a href="<%=basedomain %>/blog/dallas/plano-frisco-allen-mcKinney">Plano/Frisco/Allen/McKinney</a></li>
+                                        <li><a href="<%=basedomain %>/blog/dallas/greater-dallas">Greater Dallas</a></li>
+                                        <li><a href="<%=basedomain %>/blog/dallas/north-dallas">North Dallas</a></li>
+                                        <li><a href="<%=basedomain %>/blog/dallas/southlake-grapevine-colleyville">Southlake/Grapevine/Colleyville</a></li>
+                                        <li><a href="<%=basedomain %>/blog/dallas/flower-mound-lewisville-highland-village">Flower Mound/Lewisville/Highland Village</a></li>
+							        </ul>
+						        </li>
+						        <li><a href="<%=basedomain %>/blog/houston">Houston</a>
+							        <ul>
+								        <li><a href="<%=basedomain %>/blog/houston/west-houston-suburbs">West Houston Suburbs</a>
+                                        <li><a href="<%=basedomain %>/blog/houston/north-houston-suburbs">North Houston Suburbs</a>
+                                        <li><a href="<%=basedomain %>/blog/houston/fort-bend-county">Fort Bend County</a>
+                                        <li><a href="<%=basedomain %>/blog/houston/the-heights-midtown">The Heights/Midtown</a>
+							        </ul>
+						        </li>
+					        </ul>
+				        </li>
+                        <li><a href="<%=basedomain %>/blog/washington-dc/washington-dc">Washington, DC</a></li>
+			        </ul>
+                    <div class="span-div"></div>
+		        </div>
+	        </div>
+
+                <div id="categories" class="sub-menu">
+                <div class="container">
+		    
+                    <asp:ListView runat="server" ID="ListView1" OnItemDataBound="ListView1_ItemDataBound">
+                        <LayoutTemplate>
+                            <ul>
+                                <li runat="server" id="itemPlaceholder" />
+                            </ul>
+                        </LayoutTemplate>
+                        <ItemTemplate>
+                            <li><asp:HyperLink runat="server" ID="CatLink"></asp:HyperLink></li>
+                        </ItemTemplate>
+                        <EmptyDataTemplate>
+                            <ul>
+                                <li>Please, choose location to see all available Categories.</li>
+                            </ul>
+                        </EmptyDataTemplate>
+                    </asp:ListView>
+
+                    <asp:ListView runat="server" ID="ListView2" OnItemDataBound="ListView2_ItemDataBound">
+                        <LayoutTemplate>
+                            <ul>
+                                <li runat="server" id="itemPlaceholder" />
+                            </ul>
+                        </LayoutTemplate>
+                        <ItemTemplate>
+                            <li><asp:HyperLink runat="server" ID="CatLink"></asp:HyperLink></li>
+                        </ItemTemplate>
+                    </asp:ListView>
+
+                    <asp:ListView runat="server" ID="ListView3" OnItemDataBound="ListView3_ItemDataBound">
+                        <LayoutTemplate>
+                            <ul>
+                                <li runat="server" id="itemPlaceholder" />
+                            </ul>
+                        </LayoutTemplate>
+                        <ItemTemplate>
+                            <li><asp:HyperLink runat="server" ID="CatLink"></asp:HyperLink></li>
+                        </ItemTemplate>
+                    </asp:ListView>
+
+                    <asp:ListView runat="server" ID="ListView4" OnItemDataBound="ListView4_ItemDataBound">
+                        <LayoutTemplate>
+                            <ul class="last">
+                                <li runat="server" id="itemPlaceholder" />
+                            </ul>
+                        </LayoutTemplate>
+                        <ItemTemplate>
+                            <li><asp:HyperLink runat="server" ID="CatLink"></asp:HyperLink></li>
+                        </ItemTemplate>
+                    </asp:ListView>
+
+		        </div>
+	        </div>
+
+                <div id="zip" class="sub-menu">
+		        <div class="container">
+			        <label>Please Enter Your Zipcode:</label>
+			        <div class="fields">
+				        <asp:TextBox runat="server" ID="ZipCodeChange" Text=""></asp:TextBox>
+					    <asp:Button runat="server" ID="ZipCodeChangeButton" OnClick="ZipCodeChangeButton_Click" Text="Search" />
+			        </div>
+			        <div class="or">-or-</div>
+			        <a href="#areas" class="submenu-inner link">View All Areas <span></span></a>
+		        </div>
+	        </div>
+
+                <div class="container"><!--temp-->
+			        <div id="content" class="content">
+		        		<div class="column">
+					<div class="column-top"></div>
+					<div class="column-body">
+						    <div class="pad">
+								<asp:Panel ID="TopAdds" CssClass="ads top-adds" runat="server">
+                                    <!-- Top Banner -->
+                                    <ins class="adsbygoogle"
+                                         style="display:inline-block;width:970px;height:90px"
+                                         data-ad-client="ca-pub-6817694749431625"
+                                         data-ad-slot="5952532795"></ins>
+                                    <script>
+                                        (adsbygoogle = window.adsbygoogle || []).push({});
+                                    </script>
+                                </asp:Panel>  
+							    <asp:Panel ID="Mainbar" CssClass="mainbar" runat="server">
+                                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        
+                                    </asp:ContentPlaceHolder>
+
+
+                                    <asp:Panel CssClass="ads bottom-adds" runat="server" ID="BottomAdds" Visible="False">
+                                        <!-- Desktop Bottom Banner -->
+                                        <ins class="adsbygoogle"
+                                             style="display:inline-block;width:468px;height:60px"
+                                             data-ad-client="ca-pub-6817694749431625"
+                                             data-ad-slot="8905999194"></ins>
+                                        <script>
+                                            (adsbygoogle = window.adsbygoogle || []).push({});
+                                        </script>
+                                    </asp:Panel>
+                                    <asp:Button runat="server" CssClass="request-a-topic" OnClick="RequestATopic_OnClick" ID="RequestATopic" Visible="False"></asp:Button>
+
+
+                                            <asp:Panel runat="server" ID="RequestTopicContainer" DefaultButton="EmailOK" CssClass="registration-form">
+                                                <asp:LinkButton runat="server" ID="TopRequestCancel" OnClick="Cancel_RequestEmailClick" CssClass="btn-close2"></asp:LinkButton>
+                                                <div runat="server" id="RequestATopicEmail" class="modalPopup modalPopupEmail">
+                                                <h3>You are requesting a topic you would like to read about.<strong><asp:Label runat="server" ID="EmailContractorNameInReq"></asp:Label></strong></h3>
+		                                            <p class="note">Please fill out the following form completely:</p>
+                                                    <div class="fields">
+		                                                <fieldset>
+			                                                <label class="req">First Name:*</label>
+			                                                <asp:TextBox runat="server" ID="NameInReq"></asp:TextBox>
+                                                            <asp:Label runat="server" ID="ReqNameInReq" Text="First Name is required!" ForeColor="Red" Visible="false"></asp:Label>
+		                                                </fieldset>
+		                                                <fieldset>
+			                                                <label class="req">Last Name:*</label>
+			                                                <asp:TextBox runat="server" ID="LastNameInReq"></asp:TextBox>
+                                                            <asp:Label runat="server" ID="ReqLastNameInReq" Text="Last Name is required!" ForeColor="Red" Visible="false"></asp:Label>
+		                                                </fieldset>
+		                                               <fieldset class="medium">
+			                                                <label class="req">Email:*</label>
+			                                                <asp:TextBox runat="server" ID="EmailInReq" Columns="30"></asp:TextBox>
+                                                            <asp:Label runat="server" ID="ReqEmailInReq" Text="A valid Email is required!" ForeColor="Red" Visible="false"></asp:Label>
+		                                                </fieldset>
+		                                                <fieldset class="full">
+			                                                <label class="req">Subject:*</label>
+			                                                <asp:TextBox runat="server" ID="SbjInReq" Columns="30"></asp:TextBox>
+                                                            <asp:Label runat="server" ID="ReqSbjInReq" Text="Subject is required!" ForeColor="Red" Visible="false"></asp:Label>
+		                                                </fieldset>
+		                                                <fieldset class="full">
+			                                                <label class="req">Message:*</label>
+			                                                <asp:TextBox runat="server" ID="MessageInReq" TextMode="MultiLine" Rows="3" Columns="41"></asp:TextBox>
+                                                            <asp:Label runat="server" ID="ReqMessageInReq" Text="Message is required!" ForeColor="Red" Visible="false"></asp:Label>
+		                                                </fieldset>
+                                                        <asp:Panel runat="server" ID="ReqPanelInReq" Visible="false" CssClass="reqpanel">
+                                                            <p style="text-align:center; color:#ff0000;">*Please fill out all required fields.</p>
+                                                        </asp:Panel>
+		                                                <fieldset class="submit">
+			                                                <div class="cancel"><asp:LinkButton runat="server" ID="EmailCancelReq" Text="Cancel" OnClick="Cancel_RequestEmailClick"></asp:LinkButton></div>
+			                                                <asp:Button runat="server" ID="SubmitEmail" Text="Submit" OnClick="OK_RequestEmailClick" />
+		                                                </fieldset>
+                                                    </div>
+                                                </div>
+                                                <asp:Panel runat="server" ID="EmailCompleteRequest" CssClass="modalPopup modalPopupEmail" visible="false">
+                                                    <h3>Success!</h3>
+                                                    <p class="note">You have successfully completed the request for topic form.  Your information will be forwarded on to the company.</p>
+                                                    <fieldset class="submit">
+                                                        <asp:Button runat="server" ID="CaloseRequestEmail" Text="Close" OnClick="CloseRequestEmail_Click" />
+                                                    </fieldset>
+                                                    <img src="http://aae.tradatracker.net/track/conv.gif?advertiser=5dec707028b05bcbd3a1db5640f842c5&action=BestPick_Lead" />
+                                                </asp:Panel>
+                                            </asp:Panel>
+                                            <!-- Fake button to appease the MPE -->
+                                            <asp:Button runat="server" ID="RequestEmailFakeBtn" style="display:none" />
+                                            <cc1:ModalPopupExtender runat="server" ID="SendRequestEmail" PopupControlID="RequestTopicContainer" TargetControlID="RequestEmailFakeBtn" BackgroundCssClass="overlay" PopupDragHandleControlID="EmptyReqPanel" RepositionMode="None"></cc1:ModalPopupExtender>
+                                            <asp:Panel runat="server" ID="EmptyReqPanel"></asp:Panel>
+
+                                </asp:Panel><!-- mainbar -->
+
+			                    <asp:Panel ID="Sidebar" runat="server" CssClass="sidebar">
+								    <asp:Panel ID="SideBarAdds" CssClass="ads sidebar-adds" runat="server">
+                                        <!-- Side Square -->
+                                        <ins class="adsbygoogle"
+                                             style="display:inline-block;width:250px;height:250px"
+                                             data-ad-client="ca-pub-6817694749431625"
+                                             data-ad-slot="7429265997"></ins>
+                                        <script>
+                                            (adsbygoogle = window.adsbygoogle || []).push({});
+                                        </script>
+                                    </asp:Panel>
+                                    <asp:updatepanel id="UpdatePanelMain" runat="server" updatemode="Always">
+                                         <contenttemplate>
+                                            <asp:Panel runat="server" ID="LocalBestPicks" CssClass="local-best-picks">
+                                                <div class="ribbon">Local Best Picks</div>
+                                                <p class="second-header">Call or Email</p>
+                                                <p class="recomendation">A-rated companies recommended by your neighbors</p>
+                                                <asp:DropDownList CssClass="choose-category" runat="server" ID="CategoriesChoice" OnSelectedIndexChanged="CategoriesChoice_SelectedIndexChanged" AutoPostBack="True" EnableViewState="True">
+                                                </asp:DropDownList>
+                                                <asp:Panel class="top-categories" ID="TopCategories" runat="server">
+                                                    <p>Top Categories</p>
+                                                    <asp:Repeater ID="TopCategoriesList" runat="server">
+                                                        <HeaderTemplate><ul></HeaderTemplate>
+                                                        <ItemTemplate>
+                                                            <li>
+                                                                <asp:HyperLink runat="server" NavigateUrl="#" ><%# Eval("Name") %></asp:HyperLink>
+                                                            </li>
+                                                        </ItemTemplate>
+                                                        <FooterTemplate><ul/></FooterTemplate>
+                                                    </asp:Repeater>
+                                                </asp:Panel>
+                                                <asp:Panel runat="server" ID="Contractors" CssClass="contractors">
+                                                    <asp:Repeater ID="ContractorsList" runat="server" OnItemDataBound="ContractorsList_DataBound">
+                                                        <HeaderTemplate><ul></HeaderTemplate>
+                                                        <ItemTemplate>
+                                                            <li style='<%# Container.ItemIndex <= 2 ? "" : "display: none" %>'>
+                                                                <div class="local-best-picks-container">
+                                                                    <asp:HyperLink CssClass="company-name" runat="server" ID="CompanyName" rel="nofollow"></asp:HyperLink>
+                                                                    <span class="company-phone"><%# Eval("phone") %></span>
+                                                                    <asp:Button CssClass="company-email" ID="SingleEmailBtn" runat="server" Text="Email" OnClick="SingleEmailButton_Click" CommandArgument='<%# Eval("name")+"|"+ Eval("email")+"|"+ Eval("cid") %>'></asp:Button>
+                                                                </div>
+                                                            </li>
+                                                        </ItemTemplate>
+                                                        <FooterTemplate><ul/></FooterTemplate>
+                                                    </asp:Repeater>
+                                                    <asp:Panel CssClass="preview" runat="server" ID="PreviewButtons">
+                                                        <p class="preview-all">Preview All Companies</p>
+                                                        <button class="view-more-btn"><span>View More</span><img src="/blogfiles/images/sidebar/view-more.png" class="open"/></button>
+                                                    </asp:Panel>
+                                                </asp:Panel>
+                                            </asp:Panel>
+                                            <asp:Panel runat="server" ID="MultipleEMailButton" CssClass="save-time">
+                                                <h1>Save Time!</h1>
+                                                <p>Contact Multiple<br />Best Picks Companies</p>
+                                                <img src="/blogfiles/images/sidebar/envelops.png" class="envelops"/>
+                                                <asp:LinkButton runat="server" ID="LinkButton1" Text="Email Multiple Best Picks" OnClick="MultipleEMailButton_Click"></asp:LinkButton>
+                                            </asp:Panel>
+                                            <asp:Panel runat="server" ID="FormContainer" DefaultButton="EmailOK" CssClass="registration-form">
+                                                <asp:HiddenField runat="server" ID="EmailContractorID" Value="defaultvalue" />
+                                                <asp:HiddenField runat="server" ID="ContractorEmail" />
+                                                <asp:HiddenField runat="server" ID="ContractorName" />
+                                                <asp:HiddenField runat="server" ID="MultipleEmailIDs" />
+                                                <asp:LinkButton runat="server" ID="TopCancel" OnClick="Cancel_EmailClick" CssClass="btn-close2"></asp:LinkButton>
+	                                            <asp:Panel runat="server" ID="ChooseEmailPanel" CssClass="modalPopup modalPopupEmail" Visible="false">
+                                                    <h3>Please select which Best Pick companies you<br />would like to contact about your project:</h3>
+                                                    <p class="emptynote"></p>
+                                                    <div class="fields">
+                                                        <asp:ListView runat="server" ID="EmailContractorList" OnItemDataBound="EmailContractorList_ItemDataBound">
+	                                                        <LayoutTemplate>
+                                                                <table>
+                                                                    <asp:PlaceHolder runat="server" ID="itemPlaceHolder"></asp:PlaceHolder>
+                                                                </table>
+                                                            </LayoutTemplate>
+                                                            <ItemTemplate>
+                                                                <tr>
+                                                                    <td>
+                                                                        <asp:CheckBox runat="server" ID="ContractorEmailID" ValidationGroup="GroupEmail" /><asp:HiddenField runat="server" ID="HiddenListID" /><asp:Image runat="server" ID="EmailAlert" ImageUrl="/blogfiles/images/sidebar/alert.png" CssClass="alert" /><label><asp:Label runat="server" ID="ContractorLabel"></asp:Label><asp:Label runat="server" ID="Asterisk">*</asp:Label></label>
+                                                                    </td>
+			                                                    </tr>
+                                                            </ItemTemplate>
+	                                                    </asp:ListView>
+                                                        <p runat="server" id="alertnote" visible="false" class="bnote">*Note: Not all companies accept email information requests;<br />these companies prefer to be contacted by telephone.</p>
+                                                        <p runat="server" id="errornote" visible="false" class="bnote rednote">You must select at least one company in order to continue.</p>
+                                                        <fieldset class="submit">
+                                                            <asp:Button runat="server" ID="ContinueButton" Text="Continue" OnClick="ContinueButton_Click" />
+                                                        </fieldset>
+                                                    </div>
+                                                </asp:Panel>
+                                                <div runat="server" id="ModalEmailForm" class="modalPopup modalPopupEmail">
+                                                <h3>You are requesting more information from:<strong><asp:Label runat="server" ID="EmailContractorName"></asp:Label></strong></h3>
+		                                            <p class="note">Please fill out the following form completely:</p>
+                                                    <div class="fields">
+		                                                <fieldset>
+			                                                <label class="req">First Name:*</label>
+			                                                <asp:TextBox runat="server" ID="Name"></asp:TextBox>
+                                                            <asp:Label runat="server" ID="ReqName" Text="First Name is required!" ForeColor="Red" Visible="false"></asp:Label>
+		                                                </fieldset>
+		                                                <fieldset>
+			                                                <label class="req">Last Name:*</label>
+			                                                <asp:TextBox runat="server" ID="LastName"></asp:TextBox>
+                                                            <asp:Label runat="server" ID="ReqLastName" Text="Last Name is required!" ForeColor="Red" Visible="false"></asp:Label>
+		                                                </fieldset>
+		                                                <fieldset class="full">
+			                                                <label class="req">Street Address:*</label>
+			                                                <asp:TextBox runat="server" ID="Address" Columns="38"></asp:TextBox>
+                                                            <asp:Label runat="server" ID="ReqAddress" Text="Address is required!" ForeColor="Red" Visible="false"></asp:Label>
+		                                                </fieldset>
+		                                                <fieldset>
+			                                                <label>City:</label>
+			                                                <asp:TextBox runat="server" ID="City"></asp:TextBox>
+		                                                </fieldset>
+		                                                <fieldset class="req short">
+			                                                <label class="req">Zip Code:*</label>
+			                                                <asp:TextBox runat="server" ID="ZipForMail" Columns="10"></asp:TextBox>
+                                                            <asp:Label runat="server" ID="ReqZip" Text="Zip Code is required!" ForeColor="Red" Visible="false"></asp:Label>
+		                                                </fieldset>
+		                                                <fieldset class="medium">
+			                                                <label class="req">Email:*</label>
+			                                                <asp:TextBox runat="server" ID="Email" Columns="30"></asp:TextBox>
+                                                            <asp:Label runat="server" ID="ReqEmail" Text="A valid Email is required!" ForeColor="Red" Visible="false"></asp:Label>
+		                                                </fieldset>
+		                                                <fieldset class="half">
+			                                                <label class="req">Primary Phone:*</label>
+			                                                <asp:TextBox runat="server" ID="FormPhone"></asp:TextBox>
+                                                            <asp:Label runat="server" ID="ReqPhone" Text="A valid Phone is required!" ForeColor="Red" Visible="false"></asp:Label>
+		                                                </fieldset>
+		                                                <fieldset class="half">
+			                                                <label>Alternate Phone:</label>
+			                                                <asp:TextBox runat="server" ID="FormPhone2"></asp:TextBox>
+		                                                </fieldset>
+		                                                <fieldset class="medium">
+			                                                <label class="req">Type of Work Needed:*</label>
+			                                                <asp:TextBox runat="server" ID="WorkType" Columns="38"></asp:TextBox>
+                                                            <asp:Label runat="server" ID="ReqWorkType" Text="Type of Work is required!" ForeColor="Red" Visible="false"></asp:Label>
+		                                                </fieldset>
+		                                                <fieldset class="full">
+			                                                <label class="req">Message:*</label>
+			                                                <asp:TextBox runat="server" ID="Message" TextMode="MultiLine" Rows="3" Columns="41"></asp:TextBox>
+                                                            <asp:Label runat="server" ID="ReqMessage" Text="Message is required!" ForeColor="Red" Visible="false"></asp:Label>
+		                                                </fieldset>
+                                                        <asp:Panel runat="server" ID="ReqPanel" Visible="false" CssClass="reqpanel">
+                                                            <p style="text-align:center; color:#ff0000;">*Please fill out all required fields.</p>
+                                                        </asp:Panel>
+		                                                <fieldset class="submit">
+			                                                <div class="cancel"><asp:LinkButton runat="server" ID="EmailCancel" Text="Cancel" OnClick="Cancel_EmailClick"></asp:LinkButton></div>
+			                                                <asp:Button runat="server" ID="EmailOK" Text="Submit" OnClick="OK_EmailClick" />
+		                                                </fieldset>
+                                                    </div>
+                                                </div>
+                                                <asp:Panel runat="server" ID="EmailComplete" CssClass="modalPopup modalPopupEmail" visible="false">
+                                                    <h3>Success!</h3>
+                                                    <p class="note">You have successfully completed the request for information form.  Your information will be forwarded on to the company or companies you selected, as well as to our help desk.</p>
+                                                    <fieldset class="submit">
+                                                        <asp:Button runat="server" ID="CloseEmail" Text="Close" OnClick="CloseEmail_Click" />
+                                                    </fieldset>
+                                                    <img src="http://aae.tradatracker.net/track/conv.gif?advertiser=5dec707028b05bcbd3a1db5640f842c5&action=BestPick_Lead" />
+                                                </asp:Panel>
+                                            </asp:Panel>
+                                            <!-- Fake button to appease the MPE -->
+                                            <asp:Button runat="server" ID="EmailFakeButton" style="display:none" />
+                                            <cc1:ModalPopupExtender runat="server" ID="SendEmail" PopupControlID="FormContainer" TargetControlID="EmailFakeButton" BackgroundCssClass="overlay" PopupDragHandleControlID="EmptyPanel" RepositionMode="None"></cc1:ModalPopupExtender>
+                                            <asp:Panel runat="server" ID="EmptyPanel"></asp:Panel>
+                                        </contenttemplate>
+                                        <triggers>
+                                            <asp:asyncpostbacktrigger controlid="CategoriesChoice" eventname="SelectedIndexChanged" />
+                                        </triggers>
+                                    </asp:updatepanel>
+                                    <div class="pad">
+                                        <asp:Panel runat="server" ID="RightSideColomn" CssClass="right-side-colomn">
+                                            <div class="ribbon"><span>Newsletter Sign-Up</span></div>
+                                            <h3> Have Our Articles Delivered To Your Inbox Every Month</h3>
+                                            <input type="email" id="SubscriberEmail" class="subscriber-email" placeholder="Email"/>
+                                            <p id="subscriptionStatus"></p>
+                                            <button id="Subscribe" class="subscribe-button">Subscribe</button>
+
+                                            <%--For out-market user--%>
+                                            <asp:Panel runat="server" ID="RelatedArticlesPanel" Visible="false">
+                                            <div class="ribbon"><span>Related Articles</span></div>
+                                            <asp:ListView runat="server" ID="RelatedList" OnItemDataBound="RelatedList_ItemDataBound">
+                                                <LayoutTemplate>
+                                                   <ul>
+                                                       <asp:PlaceHolder runat="server" ID="itemPlaceholder"></asp:PlaceHolder>
+                                                   </ul>
+                                                </LayoutTemplate>
+
+                                                <ItemTemplate>
+                                                    <li class="articles">
+                                                        <asp:HyperLink runat="server" ID="PostImage"/>
+                                                        <br/>
+                                                        <asp:HyperLink runat="server" ID="PostTitle"></asp:HyperLink>
+                                                    </li>
+                                                </ItemTemplate>
+                                            </asp:ListView>
+                                        </asp:Panel>
+
+                                        <asp:Panel runat="server" ID="MostPopularArticlesPanel" Visible="false">
+                                            <div class="ribbon"><span>Most Popular Articles</span></div>
+                                            <asp:ListView runat="server" ID="MostPopularArticles" OnItemDataBound="TopList_ItemDataBound">
+                                                <LayoutTemplate>
+                                                   <ul>
+                                                       <asp:PlaceHolder runat="server" ID="itemPlaceholder"></asp:PlaceHolder>
+                                                   </ul>
+                                                </LayoutTemplate>
+
+                                                <ItemTemplate>
+                                                    <li class="articles">
+                                                        <asp:HyperLink runat="server" ID="PostImage"/>
+                                                        <br/>
+                                                        <asp:HyperLink runat="server" ID="PostTitle"></asp:HyperLink>
+                                                    </li>
+                                                </ItemTemplate>
+                                            </asp:ListView>
+                                        </asp:Panel>
+
+                                         <asp:Panel runat="server" ID="ArchivePanel" CssClass="archives">
+                                            <div class="ribbon"><span>Blog Archive</span></div>
+                                             <asp:ListView runat="server" ID="ArchiveList" OnItemDataBound="ArchiveList_ItemDataBound">
+                                                <LayoutTemplate>
+                                                   <ol class="tree">
+                                                       <asp:PlaceHolder runat="server" ID="itemPlaceholder"></asp:PlaceHolder>
+                                                   </ol>
+                                                </LayoutTemplate>
+                                                <ItemTemplate>
+                                                    <li>
+                                                        <asp:Label runat="server" AssociatedControlId="year" ID="YearValue"/>
+                                                        <asp:CheckBox runat="server" ID="year"></asp:CheckBox>
+                                                        <asp:ListView runat="server" ID="MonthlyArchiveList" OnItemDataBound="MonthlyArchiveList_ItemDataBound">
+                                                            <LayoutTemplate>
+                                                               <ol>
+                                                                   <asp:PlaceHolder runat="server" ID="itemPlaceholder"></asp:PlaceHolder>
+                                                               </ol>
+                                                            </LayoutTemplate>
+                                                            <ItemTemplate>
+                                                                <li>
+                                                                    <asp:HyperLink runat="server" ID="MonthValue"/>
+                                                                </li>
+                                                            </ItemTemplate>
+                                                        </asp:ListView>
+                                                    </li>
+                                                </ItemTemplate>
+                                            </asp:ListView>
+                                        </asp:Panel>
+
+                                        </asp:Panel>
+								    </div><!-- pad -->
+							    </asp:Panel><!-- sidebar -->
+
+
+           <asp:Panel runat="server" ID="RelatedCatPanel" Visible="false" CssClass="relatedcategories">
+				<div class="relatedcat-top"></div>
+				<div class="relatedcat-body">
+					<div class="pad">
+					<h2>Do You Have An Upcoming Project Related To This Article?</h2>
+                    <h3>From our service areas listed below, choose a category to view and contact a Best Pick company</h3>
+						<div class="cats">
+							<asp:Literal runat="server" ID="AtlantaLinks"></asp:Literal>
+							<asp:Literal runat="server" ID="ChicagoLinks"></asp:Literal>
+							<asp:Literal runat="server" ID="DallasLinks"></asp:Literal>
+							<asp:Literal runat="server" ID="NovaLinks"></asp:Literal>
+							<asp:Literal runat="server" ID="HoustonLinks"></asp:Literal>
+						</div><!-- cats -->
+                        <div class="cats spacer">
+							<asp:Literal runat="server" ID="MarylandLinks"></asp:Literal>
+							<asp:Literal runat="server" ID="DCLinks"></asp:Literal>
+							<asp:Literal runat="server" ID="BirminghamLinks"></asp:Literal>
+							<asp:Literal runat="server" ID="BostonLinks"></asp:Literal>
+							<asp:Literal runat="server" ID="PhiladelphiaLinks"></asp:Literal>
+						</div><!-- cats -->
+					</div><!-- pad -->
+				</div><!-- relatedcat-body -->
+				<div class="relatedcat-bottom"></div>
+			</asp:Panel><!-- related categories -->
+
+                            </div><!-- pad -->
+					</div><!-- column-body -->
+					<div class="column-bottom"></div>
+				</div><!-- column -->
+			</div><!-- content -->
+
+                <div class="overlay hidden-popup"></div>
+                <div id="popup" class="hidden-popup">
+		            <a href="#" class="btn-close"></a>
+		            <h3>Please enter your <strong>Zip Code</strong> to receive the most relevant results:</h3>
+		            <fieldset>
+			            <asp:TextBox runat="server" ID="SearchZipBox"></asp:TextBox>
+			            <asp:Button runat="server" ID="SearchZipButton" OnClick="SearchZipButton_Click" Text="GO" />
+		            </fieldset>
+	            </div>
+
+                <div class="overlay hidden-popup2"></div>
+                <div id="popup-sorry" class="hidden-popup2">
+                    <asp:HiddenField ID="PopupSorryZipcode" runat="server" />
+		            <a href="#" class="btn-close"></a>
+		            <h3>We’re Sorry...</h3>
+		            <h4>We do not currently have any Best Pick companies to recommend in your area. To browse the blog from zip code <span id="popup-sorry-zipcode"></span>, click <i>Continue Anyway.</i></h4>
+                    <asp:Button Text="Continue Anyway" runat="server" OnClick="Continue_OutOfMarket" CssClass="popup-sorry-button" />
+                    <p>To learn more about us and the areas we service, please <a href="<%=basedomain%>/content/about-us">click here</a>, or feel free to <a href="<%=basedomain%>/content/contact-us">contact us</a>. Our customer service Help Desk would be happy to answer any questions that you might have.</p>
+	            </div>
+
+            </div><!--.container-->
+		</div><!--#container-->
+
+	    <footer id="footer">
+		    <div class="container">
+			<div class="item first">
+                <asp:Image runat="server" ID="FooterLogo" ImageUrl="images/footer/footerLogo.png" ></asp:Image>
+			</div>
+			<div class="item vertical-line-left">
+				<h3>Our Cities</h3>
+				<ul>
+					<li><a href="http://www.bestpickreports.com/atlanta" id="atlantalink"rel="nofollow">Atlanta</a></li>
+                    <li><a href="http://www.bestpickreports.com/birmingham" id="bhamlink"rel="nofollow">Birmingham</a></li>
+                    <li><a href="http://www.bestpickreports.com/boston" id="masslink"rel="nofollow">Boston</a></li>
+                    <li><a href="http://www.bestpickreports.com/chicago" id="chicagolink"rel="nofollow">Chicago</a></li>
+                    <li><a href="http://www.bestpickreports.com/dallas" id="dallaslink" rel="nofollow">Dallas</a></li>
+                    <li><a href="http://www.bestpickreports.com/houston" id="houstonlink" rel="nofollow">Houston</a></li>
+                    <li><a href="http://www.bestpickreports.com/maryland" id="marylandlink" rel="nofollow">Maryland</a></li>
+                    <li><a href="http://www.bestpickreports.com/northern-virginia" id="nvlink" rel="nofollow">Northern Virginia</a></li>
+                    <li><a href="http://www.bestpickreports.com/philadelphia" id="pennlink" rel="nofollow">Philadelphia</a></li>
+                    <li><a href="http://www.bestpickreports.com/washington-dc" id="dclink" rel="nofollow">Washington, DC</a></li>
+				</ul>
+			</div>
+			<div class="item">
+				<h3>Connect</h3>
+				<ul>
+					<li><a href="<%=basedomain%>/content/contact-us" rel="nofollow">Contact Us</a></li>
+					<li><a href="<%=basedomain%>/share-your-feedback" rel="nofollow">Share Feedback</a></li>
+					<li><a href="https://www.facebook.com/BestPickReports/app_190322544333196" target="_blank" rel="nofollow"><span class="ico-facebook"></span>Facebook</a></li>
+					<li><a href="https://twitter.com/bestpickreports" target="_blank" rel="nofollow"><span class="ico-twitter"></span>Twitter</a></li>
+					<li><a href="https://plus.google.com/115147162962806414209/posts" target="_blank" rel="nofollow"><span class="ico-google"></span>Google +</a></li>
+					<li><a href="http://itunes.apple.com/us/app/best-pick-reports/id494057962?mt=8" target="_blank" rel="nofollow"><span class="ico-ios"></span>Apple iOS App</a></li>
+					<li><a href="https://play.google.com/store/apps/details?id=com.brotherfish" target="_blank" rel="nofollow"><span class="ico-android"></span>Google Android App</a></li>
+				</ul>
+			</div>
+			<div class="item last">
+				<h3>Resources</h3>
+				<ul>
+					<li><a href="<%=basedomain%>/newsletter-sign-up" rel="nofollow">E-Newsletter</a></li>
+					<li><a href="<%=basedomain%>/content/learning-center#tips" rel="nofollow">Consumer Tips</a></li>
+					<li><a href="<%=basedomain%>/content/learning-center#insurance" rel="nofollow">Insurance Information</a></li>
+				</ul>
+			</div>
+			<p>©1997-<%= DateTime.Now.Year%> EBSCO Research LLC. All Rights Reserved.<br /><a href="<%=basedomain%>/content/privacy-policy" rel="nofollow">Privacy Policy</a> - <a href="<%=basedomain%>/content/disclaimer" rel="nofollow">Disclaimer</a></p>
+		</div><!-- / container -->
+	    </footer><!-- / footer -->
+	</div><!-- wrapper -->
+    </fieldset>
+</form>
+
+<asp:ContentPlaceHolder ID="HeadPlaceHolder" runat="server">
+    <%= System.Web.Optimization.Scripts.Render("~/Scripts/jquery") %>
+    <script type="text/javascript" src="/js/jquery.ui.js"></script>
+    <%= System.Web.Optimization.Scripts.Render("~/Scripts/blog-desktop/main")%>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".hiddenDiv").hide();
+            $(".show_hide").show();
+
+            $('.show_hide').click(function () {
+                $(".hiddenDiv").toggle();
+            });
+        });
+    </script>
+</asp:ContentPlaceHolder>
+
+<asp:ContentPlaceHolder ID="AdditionalScriptsHolder" runat="server">
+</asp:ContentPlaceHolder>
+
+<script type="text/javascript">
+
+    function showmodalemail(id, email, name) {
+        // set hidden form values
+        document.getElementById('<%= EmailContractorID.ClientID %>').value = id;
+        document.getElementById('<%= ContractorEmail.ClientID %>').value = email;
+        document.getElementById('<%= EmailContractorName.ClientID %>').innerHTML = name;
+        document.getElementById('<%= ContractorName.ClientID %>').value = name;
+        document.getElementById('<%= ModalEmailForm.ClientID %>').style.display = "block";
+
+        var element = document.getElementById('<%= ReqPanel.ClientID %>');
+        if (element != null && element.value != '') {
+            element.style.display = "none";
+        }
+
+        document.getElementById('<%= Name.ClientID %>').value = "";
+        document.getElementById('<%= LastName.ClientID %>').value = "";
+        document.getElementById('<%= City.ClientID %>').value = "";
+        document.getElementById('<%= Address.ClientID %>').value = "";
+        document.getElementById('<%= ZipForMail.ClientID %>').value = "";
+        document.getElementById('<%= Email.ClientID %>').value = "";
+        document.getElementById('<%= WorkType.ClientID %>').value = "";
+        document.getElementById('<%= FormPhone.ClientID %>').value = "";
+        document.getElementById('<%= FormPhone2.ClientID %>').value = "";
+        document.getElementById('<%= Message.ClientID %>').value = "";
+
+        $find('<%= SendEmail.ClientID %>').show();
+    }
+
+    function showExt(catinfoid, catid, citydisplayname, isexpanded, strcity) {
+        // toggle is expanded
+        if (isexpanded == "true")
+            isexpanded = "false";
+        else
+            isexpanded = "true";
+
+        var url = "/inlinecontent.aspx?type=category&infoid=" + catinfoid + "&catid=" + catid + "&city=" + strcity + "&cityname=" + citydisplayname + "&isexpanded=" + isexpanded;
+        //alert(url);
+
+        document.getElementById('categoryiframe').src = url;
+    }
+
+    function hidemodalemail() {
+        $find('<%= SendEmail.ClientID %>').hide();
+    }
+</script>
+
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5127eb9e4963bdca" async="async"></script>
+
+</body>
+</html>

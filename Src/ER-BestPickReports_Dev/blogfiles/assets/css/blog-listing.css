@@ -1,0 +1,78 @@
+﻿.blog-article-listing-title
+{
+	font-weight: bold;
+	font-size: 15pt;
+}
+.blog-article-listing-addpost
+{
+	min-width: 85px;
+	float: right;
+	background: #fff;
+	color: #000;
+	border-radius: 6px;
+	border: 1px solid #CFCFCF;
+	padding: 3px 10px;
+	font-size: 10pt;
+	box-shadow: 1px 1px 1px #B3B3B3;
+	background-image: linear-gradient(to bottom, #FBFBFB 0, #F1F1F1 50%, #F1F1F1 60%, #EEE 100%)
+}
+.blog-article-listing-addpost-icon
+{
+	width: 20px;
+	height: 20px;
+	background-image: url('/blogfiles/images/icon-add-post.png');
+	padding: 0px;
+	display: block;
+	float: left;
+	margin-right: 7px;
+	border-radius: 20px;
+	padding: 2px;
+	background-size: 20px 20px;
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+	background-color: #fff;
+	box-shadow: 0px 1px 3px #A8A8A8;
+}
+.blog-article-listing {
+	border: 1px solid #ACACAC;
+	color: #372D33;
+	font-size: 10pt;
+}
+.blog-article-listing-header {
+	background-image: linear-gradient(to bottom, #FBFBFB 0, #EAEAEA 61.5%);
+	height: 33px;
+}
+.blog-article-listing-row:nth-child(odd) {
+	background-color: #fff;
+
+}
+.blog-article-listing-row:nth-child(even) {
+	background-color: #EEE;
+}
+
+
+.blog-article-listing-header td {
+	vertical-align: middle;
+}
+.blog-article-listing-row td {
+	min-width: 70px;
+	padding-right: 10px;
+	vertical-align: middle;
+}
+.blog-article-listing-publish
+{
+	text-align: center;	
+}
+.blog-article-listing-top
+{
+	text-align: center;
+}
+.post-edit-controls-edit
+{
+	background-image: url('/blogfiles/images/icon-edit.png');
+	background-size: 24px 24px;
+	display: block;
+	width: 24px;
+	height: 24px;
+	margin: 5px auto;
+}

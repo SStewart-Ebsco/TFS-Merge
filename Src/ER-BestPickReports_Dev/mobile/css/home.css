@@ -1,0 +1,172 @@
+﻿.home-title 
+{
+    display: block;
+    width: 100%;
+    margin: 18px auto 0 auto;
+    font-size: 22.5pt;
+    font-weight: bold;
+    text-align: center;
+}
+.home-subtitle
+{
+    display: block;
+    width: 100%;
+    margin: -3px auto;
+    font-size: 19pt;
+    font-weight: lighter;
+    text-align: center;
+}
+.home-video
+{
+    margin-top: 21px;
+    text-align: center;
+}
+.home-video>iframe
+{
+    max-width: 100%;
+}
+
+
+
+.tip-area
+{
+    background-color: #fff;
+    margin: 12px -13px 0 -13px;
+}
+
+.tip-area-list
+{
+    list-style: none;
+}
+.tip-area-list-item
+{
+    height: 55px;
+    background-repeat: no-repeat;
+    background-position: 5px 20px;
+}
+.tip-area-list-item:hover
+{
+    cursor: pointer;
+}
+.tip-area-list-item-newsletter
+{
+    padding-top: 33px;
+    border-bottom: 1px solid #e5e5e5;
+    padding-bottom: 18px;
+}
+.tip-area-list-item-marker
+{
+    float: left;
+    margin: -17px 4px;
+}
+.tip-area-list-item-requestaguide
+{
+    padding-top: 39px;
+}
+.tip-area-list-item-title
+{
+    margin-left: 90px;
+    display: block;
+    font-weight: bold;
+    font-size: 13pt;
+    color: #000;
+    text-decoration: none;
+}
+.top-categories
+{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    height: 300px;
+}
+.top-category
+{
+    width: 33%;
+    height: 130px;
+    display: block;
+    float: left;
+    margin: 20px 0 0 0;
+    overflow: hidden;
+}
+.top-category-link
+{
+    color: #000;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 9pt;
+}
+.top-category-icon
+{
+    display: block;
+    margin: 0 auto;
+}
+.top-category-title
+{
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.reward-big
+{
+    width: 119px;
+    display: block;
+    margin: 15px auto 0 auto;
+}
+.home-text
+{
+    font-size: 11pt;
+    font-weight: normal;
+    color: #000;
+    position: relative;
+    z-index: 1;
+}
+.home-company-requirements-title
+{
+    font-size: 15pt;
+    font-weight: bold;
+    color: #000;
+    margin: 50px 0 0 0;
+}
+.home-company-requirements-list
+{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.home-company-requirements-item
+{
+    font-size: 14pt;
+    background: url("/images/bg_check.png") no-repeat 0 50%;
+    padding: 15px 0 10px 32px;
+    font-weight: bold;
+}
+.home-company-requirements-item-text
+{
+
+}
+
+.home-logo-shine-wrapper
+{
+    height: 255px;
+    background-repeat: no-repeat;
+    margin: -17px auto -100px auto;
+    box-sizing: border-box;
+    overflow: hidden;
+    left: -13px;
+    position: relative;
+    z-index: 0;
+}
+.home-logo
+{
+    width: 103px;
+    height: 103px;
+    margin: 40px auto;
+    box-shadow: 0 0 3px #333, 0 0 65px 32px #FFF;
+    border-radius: 18px;
+}
+.home-section
+{
+    padding: 15px 0 0 0;
+    margin: 0;
+}

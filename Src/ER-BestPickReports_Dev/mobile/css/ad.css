@@ -1,0 +1,30 @@
+﻿.ad {
+    background-color: #f3f8fe;
+
+
+}
+.ad-text {
+    display: block;
+    text-align: center;
+	margin: 17px 18px 0 15px;
+	font-size: 15pt;
+}
+.ad-title {
+    display: block;
+    color: #002f87;
+	font-size: 16pt;
+	font-weight: bold;
+	text-align: center;
+	margin: -1px;
+}
+.ad-image {
+	margin: 18px auto 0 auto;
+	display: block;
+	padding-left: 10px;
+}
+.ad-footer {
+	width: 100%;
+	background-color: #002f87;
+	overflow: auto;
+	padding: 6px 10px 0 10px;
+}

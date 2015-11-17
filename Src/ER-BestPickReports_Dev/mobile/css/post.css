@@ -1,0 +1,328 @@
+.post
+{
+	display: block;
+	background-color: #f5f5f5;
+	background-repeat: no-repeat;
+	font-size: 7pt;
+	width: 294px;
+	height: auto;
+	padding-bottom: 7px;
+	padding: 6px 10px 14px 10px;
+	margin: 18px auto 0 auto;
+	z-index: 1;
+}
+.post .button
+{
+	display: inline;
+	margin: 0;
+	width: 75px;
+	text-decoration: none;
+	background: linear-gradient(to bottom, rgba(54, 205, 255, 1), rgba(54, 205, 255, 0)) -128px 0 repeat-y, linear-gradient(to bottom, rgba(54, 205, 255, 1), rgba(54, 205, 255, 0)) 128px 0 repeat-y, linear-gradient(to bottom, rgba(54, 205, 255, 1), rgba(54, 205, 255, 1)) 0 -20px repeat-x, linear-gradient(to bottom, #0095f3, #036cbf), #007ed7;
+	text-align: center;
+	clear: both;
+	height: 14px;
+}
+.post .button:hover
+{
+	color: #fff;
+	text-decoration: none;
+}
+.date
+{
+	float: left;
+	width: 30px;
+	height: 30px;
+	background-repeat: no-repeat;
+}
+.date-month
+{
+	display: block;
+	width: 100%;
+	height: 16px;
+	text-align: center;
+	padding-top: 5px;
+	color: #fff;
+	font-weight: bold;
+	margin-top: -2px;
+	font-size: 7pt;
+}
+.date-date
+{
+	width: 100%;
+	height: 28px;
+	display: block;
+	text-align: center;
+	color: #000;
+	padding-top: 0px;
+	font-weight: bold;
+	font-size: 10pt;
+	margin-top: -6px;
+}
+.post-datetitle
+{
+	margin-top: 10px;
+}
+.post-title
+{
+	margin-left: 40px;
+	margin-top: 0;
+	font-size: 8pt;
+	color: #000;
+	border-bottom: 1px solid #002f87;
+	min-height: 30px;
+	font-weight: bold;
+}
+.post-title>a
+{
+	color: inherit;
+}
+.post-image-container
+{
+	width: 105px;
+	height: 105px;
+	float: left;
+	margin-right: 10px;
+}
+.post-image-link
+{
+    width: 110px;
+    height: 110px;
+    display: block;
+    float: left;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+.post-image-preview
+{
+}
+.post-image
+{
+	float: left;
+	margin-right: 10px;
+}
+.post-author
+{
+	color: #888;
+	margin-bottom: 2px;
+	font-size: 7pt;
+}
+.post-author>span:empty {
+	display: none;
+}
+.post-author-name
+{
+	font-weight: bold;
+}
+.post-author-name:before
+{
+	content: "By "
+}
+.post-author-name:after
+{
+	content: " | "
+}
+.post-author-title
+{
+
+}
+.post-summary
+{
+	min-height: 60px;
+	display: block;
+	margin-bottom: 7px;
+	text-align: justify;
+	font-size: 6.6pt;
+	color: #888;
+}
+.post-content
+{
+
+}.post-content img {
+	max-width: 100%;
+	height: auto;
+}
+.post-content>p[style]>strong
+{
+	color: #002f87;
+}
+.post-content>p>strong
+{
+	color: #00a8e2;
+}
+.post-content a
+{
+	color: #0000ff;
+}
+.post-content ul
+{
+	color: #000 !important;
+	/*list-style-type: none;
+	padding: 0px;
+	margin: 0px;
+	*/
+}
+.post-content h3 {
+	font-size: 1.5em;
+	color: #002f87;
+	font-family: 'myriad-pro';
+	font-weight: 700;
+	line-height: 18px;
+	margin-bottom: 15px;
+}
+.post-local-best
+{
+	background-image: url('/blogfiles/images/post/reward_2015.png');
+	background-repeat: no-repeat;
+	background-size: 41px 68px;
+	height: 68px;
+	display: block;
+	margin-bottom: 10px;
+	
+}
+.post-local-best-text
+{
+	color: #002f87;
+	font-weight: bold;
+	padding-left: 50px;
+	height: 100%;
+	display: block;
+}
+.post-local-best-text a
+{
+	color: inherit;
+	font-weight: inherit;
+	vertical-align: middle;
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    display: block;
+}
+
+
+
+.pager-button
+{
+	height: 25px;
+	width: 142px;
+	background-color: #007dd6;
+	border-radius: 12px;
+    color: #fff;
+    text-shadow: 0 0 1px #000;
+    padding-top: 5px;
+    background-image:
+        linear-gradient(to bottom, #30c7fe, #026bbe);
+    border: 1px solid black;
+    font-family: Arial;
+}
+.button-content
+{
+	background: linear-gradient(to bottom, #0095f4, #016abd);
+	margin-top: -4px;
+	margin-left: 1px;
+	margin-right: 1px;
+	border-radius: inherit;
+	font-weight: bold;
+	padding-top: 1px;
+	font-size: small;
+}
+
+
+.post-thumbtack
+{
+	width: 17px;
+	height: 25px;
+	position: absolute;
+	left: 50%;
+	margin-left: -8px;
+	margin-top: 5px;
+	z-index: 2;
+}
+
+
+/*!
+Animate.css - http://daneden.me/animate
+Licensed under the MIT license - http://opensource.org/licenses/MIT
+
+Copyright (c) 2014 Daniel Eden
+*/
+
+
+.swing {
+  -webkit-transform-origin: top center;
+      -ms-transform-origin: top center;
+          transform-origin: top center;
+  -webkit-animation-name: swing;
+          animation-name: swing;
+}
+
+@-webkit-keyframes swing {
+  20% {
+    -webkit-transform: rotate3d(0, 0, 1, 15deg);
+            transform: rotate3d(0, 0, 1, 15deg);
+  }
+
+  40% {
+    -webkit-transform: rotate3d(0, 0, 1, -10deg);
+            transform: rotate3d(0, 0, 1, -10deg);
+  }
+
+  60% {
+    -webkit-transform: rotate3d(0, 0, 1, 5deg);
+            transform: rotate3d(0, 0, 1, 5deg);
+  }
+
+  80% {
+    -webkit-transform: rotate3d(0, 0, 1, -5deg);
+            transform: rotate3d(0, 0, 1, -5deg);
+  }
+
+  100% {
+    -webkit-transform: rotate3d(0, 0, 1, 0deg);
+            transform: rotate3d(0, 0, 1, 0deg);
+  }
+}
+
+@keyframes swing {
+  20% {
+    -webkit-transform: rotate3d(0, 0, 1, 15deg);
+            transform: rotate3d(0, 0, 1, 15deg);
+  }
+
+  40% {
+    -webkit-transform: rotate3d(0, 0, 1, -10deg);
+            transform: rotate3d(0, 0, 1, -10deg);
+  }
+
+  60% {
+    -webkit-transform: rotate3d(0, 0, 1, 5deg);
+            transform: rotate3d(0, 0, 1, 5deg);
+  }
+
+  80% {
+    -webkit-transform: rotate3d(0, 0, 1, -5deg);
+            transform: rotate3d(0, 0, 1, -5deg);
+  }
+
+  100% {
+    -webkit-transform: rotate3d(0, 0, 1, 0deg);
+            transform: rotate3d(0, 0, 1, 0deg);
+  }
+}
+.animated {
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+}
+
+.animated.infinite {
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+}
+
+.animated.hinge {
+  -webkit-animation-duration: 2s;
+          animation-duration: 2s;
+}

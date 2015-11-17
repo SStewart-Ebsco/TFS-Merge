@@ -1,0 +1,14 @@
+﻿body{
+    min-width: 290px;
+}
+.category-header.category-container {
+    padding-bottom: 33px;
+}
+.category-contractor-item {
+    margin: 0;
+}
+.interviews 
+{
+    margin-top: 10px;
+    padding-bottom: 10px;
+}

@@ -1,0 +1,119 @@
+﻿
+.quoteButton
+{
+    vertical-align:top;    
+    font-weight:bold !important;    
+    font:inherit;
+    color:Black;
+    background-image:url(/images/review_navigation_bg.png);  
+    background-repeat:repeat-x;     
+    height:32px !important;
+    width:auto !important;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, .5);
+    padding: 0px 7px 0px 7px !important;
+    border-radius:5px;
+    border-style:solid;
+    border-color:#c9c9c9;
+    border-width:thin;
+}
+
+.quoteButtonSelected
+{
+    vertical-align:top;    
+    font-weight:bold !important;    
+    font:inherit;
+    color:White;
+    background-image:url(/images/review_navigation_bg_pressed.png);      
+    background-repeat:repeat-x;     
+    height:26px !important;
+    width:auto !important;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, .5);
+    padding: 6px 7px 0px 7px !important;
+    border-radius:5px;
+    border-bottom-right-radius: 5px;
+    border-style:solid;
+    border-color:white;    
+    border-width:0px;  
+    display:inline-block;   
+    
+}
+
+input.quoteButton:hover
+{
+    background-image:url(/images/review_navigation_bg_hover.png);  
+}
+
+.quoteButtonPrevious
+{
+    vertical-align:top;    
+    background-image:url(/images/review_navigation_leftArrow.png);      
+    background-repeat:no-repeat;    
+    height:30px !important;    
+    width:30px;  
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, .5);
+    border-radius:5px;
+    border-style:solid;
+    border-color:#c9c9c9;
+    border-width:thin;
+    display:inline-block;
+    
+}
+.quoteButtonPrevious image
+{
+    content: "" !important;
+    border-width:0px;
+    border-style: none;
+    
+}
+
+input.quoteButtonPrevious:hover
+{
+    background-image:url(/images/review_navigation_leftArrow_hover.png);  
+}
+
+.quoteButtonNext
+{
+    vertical-align:top;
+    background-image:url(/images/review_navigation_rightArrow.png);  
+    background-repeat:no-repeat;
+    width:30px;
+    height:30px !important;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, .5);
+    border-radius:5px;
+    border-style:solid;
+    border-color:#c9c9c9;
+    border-width:thin;
+    display:inline-block;
+}
+
+input.quoteButtonNext:hover
+{
+    background-image:url(/images/review_navigation_rightArrow_hover.png);  
+}
+
+.quoteButtonElipse
+{
+    vertical-align:top;      
+    background-image:url(/images/review_navigation_elipse.png);  
+    height:32px !important;
+    width:30px !important;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, .5);
+    border-radius:5px;
+    border-style:solid;
+    border-color:#c9c9c9;
+    border-width:thin !important;
+}
+
+input.quoteButtonElipse:hover
+{
+    background-image:url(/images/review_navigation_elipse_hover.png);  
+}
+
+
+
+.divCenter
+{
+     margin-left:auto;
+     margin-right:auto;
+     text-align:center;
+}

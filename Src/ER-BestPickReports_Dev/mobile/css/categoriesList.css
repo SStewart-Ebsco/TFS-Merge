@@ -1,0 +1,47 @@
+﻿.categoriesList-list
+{
+    background-color: #f3f8fe;
+    -webkit-margin-before: 0em;
+    -webkit-margin-after: 0em;
+    margin-top: 0em;
+    margin-bottom: 0em;
+    margin-left: -13px;
+    margin-right: -13px;
+}
+
+.categoriesList-item
+{
+    /*border-bottom: solid 2px #fff;
+    border-top: solid 2px #c2d0e6;*/
+}
+
+.categoriesList-separator
+{
+    border-top: solid 2px #fff;
+    border-bottom: solid 2px #d0d9eb;
+}
+
+.categoriesList-item a
+{
+    margin: 10px 10px 10px 13px;
+    display: table;
+    text-decoration: none;
+    word-break: break-word;
+}
+
+.categoriesList-item .categoriesList-icon
+{
+    float: left;
+    margin-right: 10px;
+    width: 80px;
+}
+
+.categoriesList-item .categoriesList-text
+{
+    font-size: 14pt;
+    font-weight: bold;
+    color: #000;
+    display: table-cell;
+    vertical-align: middle;
+    width: 100%;
+}

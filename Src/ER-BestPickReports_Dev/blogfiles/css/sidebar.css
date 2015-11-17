@@ -1,0 +1,561 @@
+﻿
+/* sidebar */
+.sidebar { float: right; width: 275px; font-size: 14px; }
+.sidebar-adds {
+    width: 250px;
+    height: 250px;
+    margin-left: 25px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    /*visibility: hidden;*/
+}
+
+
+.local-best-picks {
+    margin-left: 15px;
+    margin-top: 10px;
+    background: #ddebfd;
+    box-shadow: 0px 1px 15px -3px #75777a;
+    -webkit-box-shadow: 0px 1px 15px -3px #75777a;
+	-moz-box-shadow: 0px 1px 15px -3px #75777a;
+    width: 264px;
+
+    position: relative;
+
+    height: auto;
+    padding-bottom: 30px;
+
+}
+
+.ribbon {
+    width: 300px;
+    margin-left: -12px;
+    color: #FFF;
+    font-size: 24px;
+    font-family: 'myriad-pro';
+    font-weight: 700;
+    padding: 28px 57px 20px;
+    background: url(/blogfiles/images/sidebar/ribbon.png) no-repeat 0 20px;
+    -webkit-filter: drop-shadow(0 2px 3px rgba(0,0,0,.5));
+	-moz-filter: drop-shadow(0 2px 3px rgba(0,0,0,.5));
+	-ms-filter: drop-shadow(0 2px 3px rgba(0,0,0,.5));
+	-o-filter: drop-shadow(0 2px 3px rgba(0,0,0,.5));
+	filter: drop-shadow(0 2px 3px rgba(0,0,0,.5));
+    -webkit-transform: translate3d(0, 0, 0);
+}
+
+.local-best-picks .second-header {
+    color: #010000;
+    font-size: 24px;
+    font-family: 'myriad-pro';
+    font-weight: 700;
+    padding-left: 68px;
+}
+
+.local-best-picks .recomendation {
+    text-align: center;
+    line-height: 15px;
+    padding: 0 25px;
+    font-family: 'myriad-pro';
+    font-weight: 600;
+}
+
+.local-best-picks .choose-category {
+    margin: 16px 20px;
+    padding-left: 5px;
+    width: 228px;
+    height: 27px;
+    border: 1px solid #b2b7bd;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    font-family: 'myriad-pro';
+    font-weight: 600;
+    font-size: 13px;
+    color: #6e6e6e;
+    background-color: #FFFFFF;
+    -webkit-box-shadow: #ECF5FE 2px 2px 2px;
+    -moz-box-shadow: #ECF5FE 2px 2px 2px;
+    box-shadow: #ECF5FE 2px 2px 2px;
+    background-image: linear-gradient(to bottom, #FFFFFF, #E6E6E6);
+    }
+
+.local-best-picks .top-categories {
+    font-size: 16px;
+    font-family: 'myriad-pro';
+    font-weight: 700;
+}
+
+.local-best-picks .top-categories p {
+    margin: 3px 0 0 80px;
+}
+
+.local-best-picks .top-categories ul {
+    list-style-image: url('/blogfiles/images/sidebar/ul_marker.png');
+    color: #012f87;
+    margin: 0 36px;
+}
+
+.local-best-picks .top-categories li {
+    list-style-image: url('/blogfiles/images/sidebar/ul_marker.png');
+    color: #012f87;
+    margin: 7px 0;
+}
+
+.save-time {
+    margin: -14px 0 22px 15px;
+    height: 140px;
+    width: 264px;
+    position: relative;
+    background: #ddebfd;
+    box-shadow: 0px 1px 15px -3px #75777a;
+    -webkit-box-shadow: 0px 1px 15px -3px #75777a;
+    -moz-box-shadow: 0px 1px 15px -3px #75777a;
+}
+
+.save-time .envelops{
+    -webkit-filter: drop-shadow(0 2px 3px rgba(0,0,0,.5));
+	-moz-filter: drop-shadow(0 2px 3px rgba(0,0,0,.5));
+	-ms-filter: drop-shadow(0 2px 3px rgba(0,0,0,.5));
+	-o-filter: drop-shadow(0 2px 3px rgba(0,0,0,.5));
+	filter: drop-shadow(0 2px 3px rgba(0,0,0,.5));
+    padding-left: 160px;
+    padding-bottom: 70px;
+    margin-top: -50px;
+}
+.save-time h1 {
+    margin-top: 54px;
+    margin-left: 35px;
+    padding-top: 14px;
+    font-size: 22px;
+    font-family: 'myriad-pro';
+    font-weight: 700;
+}
+
+.save-time p {
+    padding-left: 35px;
+    line-height: 19px;
+}
+
+.save-time a, .save-time a:active, .save-time a:visited {
+    display: block;
+    vertical-align: middle;
+    text-align: center;
+    line-height: 26px;
+    font-size: 17px;
+    height: 28px;
+    width: 214px;
+    text-decoration: none;
+    font-family: 'myriad-pro';
+    font-weight: 600;
+    text-shadow: -1px -1px 0 rgba(30,121,203,0.3);
+    color: #FFFFFF;
+    border:1px solid #224390;
+    -webkit-box-shadow: #39BFF9 1px 1px 1px  inset;
+    -moz-box-shadow: #39BFF9 1px 1px 1px inset;
+    box-shadow: #39BFF9 1px 1px 1px  inset;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    background: #2694F1;
+    background: -webkit-gradient(linear, left top, left bottom, from(#2694F1), to(#1C69BA));
+    background: -webkit-linear-gradient(top, #2694F1, #1C69BA);
+    background: -moz-linear-gradient(top, #2694F1, #1C69BA);
+    background: -ms-linear-gradient(top, #2694F1, #1C69BA);
+    background: -o-linear-gradient(top, #2694F1, #1C69BA);
+    background: linear-gradient(to bottom, #2694F1, #1C69BA);
+    filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#2694F1, endColorstr=#1C69BA);
+
+    position: absolute;
+    left:    22px;
+    bottom: 26px;
+}
+
+.save-time a:hover {
+    border:1px solid #0b5fa6;
+    background: #0e7ad6;
+    background: -webkit-gradient(linear, left top, left bottom, from(#0e7ad6), to(#15508e));
+    background: -webkit-linear-gradient(top, #0e7ad6, #15508e);
+    background: -moz-linear-gradient(top, #0e7ad6, #15508e);
+    background: -ms-linear-gradient(top, #0e7ad6, #15508e);
+    background: -o-linear-gradient(top, #0e7ad6, #15508e);
+    background: linear-gradient(to bottom, #0e7ad6, #15508e);
+    filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#0e7ad6, endColorstr=#15508e);
+    text-decoration: none;
+}
+
+.local-best-picks .contractors {
+    font-family: 'myriad-pro';
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.local-best-picks .contractors ul {
+
+}
+
+.local-best-picks .contractors li {
+    list-style-image: url('/blogfiles/images/sidebar/medal_2015.png');
+    color: #012f87;
+    margin:  0 0 10px 55px;
+    min-height: 55px;
+    position: relative;
+    width: 190px;
+    line-height: 18px;
+}
+
+.local-best-picks-container {
+    position: absolute;
+display: block;
+height: 100%;
+margin: 0;
+top: 0;
+}
+
+.local-best-picks .contractors .company-name {
+    float: left;
+    width: 100%;
+    max-height: 35px;
+    overflow: hidden;
+}
+
+.local-best-picks .contractors .company-phone {
+    color: #ee080a;
+    float: left;
+    padding-top: 2px;
+}
+
+.local-best-picks .contractors .company-email {
+    background: url('/blogfiles/images/sidebar/envelop.png') no-repeat;
+    -webkit-filter: drop-shadow(0 2px 3px rgba(0,0,0,.5));
+	-moz-filter: drop-shadow(0 2px 3px rgba(0,0,0,.5));
+	-ms-filter: drop-shadow(0 2px 3px rgba(0,0,0,.5));
+	-o-filter: drop-shadow(0 2px 3px rgba(0,0,0,.5));
+	filter: drop-shadow(0 2px 3px rgba(0,0,0,.5));
+    float: right;
+    margin-top: 5px;
+    padding-left: 26px;
+font-size: 13px;
+font-family: 'myriad-pro';
+    font-weight: 600;
+}
+
+.local-best-picks .contractors .preview {
+    position: absolute;
+    bottom: -20px;
+    width: 100%;
+}
+
+.local-best-picks .contractors .preview .preview-all {
+    font-size: 15px;
+    padding: 5px 0 10px 55px;
+    cursor: pointer;
+}
+
+.local-best-picks .preview .view-more-btn {
+    width: 103px;
+    height: 20px;
+    float: right;
+    color: #FFF;
+    font-size: 14px;
+    line-height: 16px;
+    font-family: 'myriad-pro';
+    font-weight: 600;
+    -webkit-box-shadow: #274E9B 0px 10px 0px inset;
+    -moz-box-shadow: #274E9B 0px 10px 0px inset;
+     box-shadow: #274E9B 0px 10px 0px inset;
+    -webkit-border-radius-bottomright: 4px;
+    -moz-border-radius-bottomright: 4px;
+    border-bottom-right-radius: 4px;
+    -webkit-border-radius-bottomleft: 4px;
+    -moz-border-radius-bottomrleft: 4px;
+    border-bottom-left-radius: 4px;
+    text-decoration:none;
+    display:inline-block;
+    background-color: #274E9B;
+    background: -webkit-gradient(linear, left top, left bottom, from(#274E9B), to(#012F85));
+    background: -webkit-linear-gradient(top, #274E9B, #012F85);
+    background: -moz-linear-gradient(top, #274E9B, #012F85);
+    background: -ms-linear-gradient(top, #274E9B, #012F85);
+    background: -o-linear-gradient(top, #274E9B, #012F85);
+    background: linear-gradient(to bottom, #274E9B, #012F85);
+    filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#274E9B, endColorstr=#012F85);
+    position: relative;
+}
+
+.view-more-btn span {
+    position: absolute;
+    top: 2px;
+    left: 14px;
+}
+.view-more-btn .open {
+    position: absolute;
+    right: 8px;
+    top: 8px;
+}
+
+.view-more-btn .close {
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    transform: rotate(180deg);
+}
+
+
+
+.right-side-colomn {
+    background: #fafafa;
+    box-shadow: 0 6px 15px -1px #75777a;
+    -webkit-box-shadow: 0 6px 15px -1px #75777a;
+	-moz-box-shadow: 0 6px 15px -1px #75777a;
+    height: auto;
+    width: 264px;
+    margin-left: -5px;
+    margin-bottom: 50px;
+}
+
+.right-side-colomn .ribbon > span {
+    margin-left: -22px;
+}
+
+.right-side-colomn h3 {
+    color: #000;
+    font-size: 16px;
+    text-align: center;
+    padding: 13px 26px;
+}
+
+.subscriber-email {
+    border: 1px solid #d5d5d5;
+    color: #c2c2c2;
+    height: 37px;
+    width: 207px;
+    -webkit-box-shadow: #eee 0 1px 3px 1px inset;
+    -moz-box-shadow: #eee 0 1px 3px 1px inset;
+    box-shadow: #eee 0 1px 3px 1px inset;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+
+    margin-left: 18px;
+    margin-bottom: 18px;
+    padding: 0 10px;
+    font-size: 18px;
+}
+
+.subscribe-button {
+    width: 122px;
+    height: 35px;
+    display: block;
+    vertical-align: middle;
+    text-align: center;
+    line-height: 31px;
+    font-size: 20px;
+    text-decoration: none;
+    font-family: 'myriad-pro';
+    font-weight: 600;
+    text-shadow: -1px -1px 0 rgba(30,121,203,0.3);
+    color: #FFFFFF;
+    border: 1px solid #224390;
+    -webkit-box-shadow: #39BFF9 1px 1px 1px inset;
+    -moz-box-shadow: #39BFF9 1px 1px 1px inset;
+    box-shadow: #39BFF9 1px 1px 1px inset;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    background: #2694F1;
+    background: -webkit-gradient(linear, left top, left bottom, from(#2694F1), to(#1C69BA));
+    background: -webkit-linear-gradient(top, #2694F1, #1C69BA);
+    background: -moz-linear-gradient(top, #2694F1, #1C69BA);
+    background: -ms-linear-gradient(top, #2694F1, #1C69BA);
+    background: -o-linear-gradient(top, #2694F1, #1C69BA);
+    background: linear-gradient(to bottom, #2694F1, #1C69BA);
+    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#2694F1, endColorstr=#1C69BA);
+    margin-left: 70px;
+    margin-bottom: 22px;
+}
+
+.error {
+    color: red;
+    font-family: 'myriad-pro';
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.success {
+    color: green;
+    font-family: 'myriad-pro';
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.sidebar .articles {
+    width: 205px;
+    margin: 20px 30px 30px 30px;
+    line-height: 18px;
+    text-align: center;
+}
+
+.sidebar .articles img {
+    width: 204px;
+    height: 153px;
+    margin-bottom: 11px;
+}
+
+
+.sidebar .articles a, .sidebar .articles a:hover, .sidebar .articles a:visited {
+    font-family: 'myriad-pro';
+    font-weight: 700;
+    font-size: 16px;
+    color: #000;
+}
+
+/* sidebar */
+.sidebar .pad { width: 235px; margin: 0 auto; padding: 15px 0; }
+.sidebar h2 { font-size: 18px; color: #333; padding-bottom: 3px; margin-bottom: 10px; border-bottom: 3px solid #333; }
+.sidebar h2.bestpick { width: 195px; height: 94px; padding: 0; margin: 0 auto 15px; border-bottom: 0; }
+.sidebar h2.homereports { width: 195px; height: 94px; padding: 0; margin: 0 auto 15px; border-bottom: 0; }
+.sidebar .block { margin-bottom: 25px; }
+
+
+
+/* categories */
+.categories ul { margin-left: 20px; }
+.categories li { margin-bottom: 3px; list-style-type: disc; }
+
+
+/* relatedcategories */
+.relatedcategories {
+    width: 980px;
+    margin-bottom: 10px;
+    font-family: 'myriad-pro';
+    font-weight: 700;
+    float: left;
+    margin-top: -65px;
+}
+.relatedcategories .pad {
+    width: 920px;
+    margin: 40px auto 70px auto;
+    padding: 25px 30px 40px 30px;
+    overflow: hidden;
+    background: #fafafa;
+    box-shadow: 0 6px 15px -1px #75777a;
+    -webkit-box-shadow: 0 6px 15px -1px #75777a;
+	-moz-box-shadow: 0 6px 15px -1px #75777a;
+}
+.relatedcategories h2 {
+     font-size: 24px; 
+font-weight: normal;
+ color: #000;
+ padding-bottom: 10px;
+ margin-bottom: 6px;
+ border-bottom: 2px solid #002f87;
+}
+.relatedcategories h3 {
+    font-size: 18px;
+    color: #4a4a4a;
+    margin-bottom: 25px;
+}
+.relatedcategories .cats {
+    width: 920px;
+    overflow: hidden;
+}
+.relatedcategories ul { float: left; }
+.relatedcategories li a {
+    font-size: 13px;
+    font-family: 'myriad-pro';
+    font-weight: 600;
+    color: #003085;
+}
+.relatedcategories li h3 {
+    margin-bottom: 10px;
+    color: #000;
+}
+.relatedcategories .atlanta,
+.relatedcategories .chicago,
+.relatedcategories .dallas,
+.relatedcategories .washington,
+.relatedcategories .birmingham,
+.relatedcategories .boston,
+.relatedcategories .maryland,
+.relatedcategories .northvirginia {
+    border-right:1px solid #e1e1e1;
+    padding-right:20px;
+    margin-left:20px;
+    min-width: 147px;
+}
+.relatedcategories .atlanta,
+.relatedcategories .maryland { margin-left:0; }
+.relatedcategories .houston { float: right; }
+.relatedcategories .philadelphia { margin-left: 20px; }
+.relatedcategories .spacer { margin-top:20px; }
+
+
+
+/* CSS Tree menu styles */
+.archives ol.tree
+{
+    padding: 15px 0 20px 28px;
+    font-family: 'myriad-pro';
+    font-weight: 700;
+    font-size: 18px;
+    color: #023088;
+}
+	.archives li 
+	{ 
+		position: relative;
+		list-style: none;
+	    padding-bottom: 10px;
+	}
+	.archives li.month
+	{
+		margin-left: -1px !important;
+	}
+		.archives li.month a
+		{
+			padding-left: 21px;
+			text-decoration: none;
+			display: block;
+		}
+	.archives li input
+	{
+		position: absolute;
+		left: 0;
+		margin-left: 0;
+		opacity: 0;
+		z-index: 2;
+		cursor: pointer;
+		height: 1em;
+		width: 1em;
+		top: 0;
+	}
+		.archives li input + ol
+		{
+			background: url('/blogfiles/images/sidebar/archive_marker.png') 40px 0 no-repeat;
+			margin: -0.938em 0 0 -44px; /* 15px */
+			height: 1em;
+		}
+		li input + ol > li { display: none; margin-left: -14px !important; padding-left: 1px; }
+	.archives li label
+	{
+		cursor: pointer;
+		display: block;
+		padding-left: 12px;
+	}
+
+	.archives li input:checked + ol
+	{
+		background: url('/blogfiles/images/sidebar/archive_marker_opened.png') 40px 8px no-repeat;
+		margin: -1.25em 0 0 -44px; /* 20px */
+        padding: 1.563em 0 0 70px;
+        font-family: 'myriad-pro';
+        font-weight: 600;
+        color: #012f87;
+        height: auto;
+	}
+
+
+		.archives li input:checked + ol > li { display: block; margin: 0 0 0.125em;  /* 2px */}
+		.archives li input:checked + ol > li:last-child { margin: 0 0 0.063em; /* 1px */ }
